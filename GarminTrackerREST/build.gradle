@@ -27,3 +27,12 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+apply plugin: 'war'
+war {
+	enabled = true
+	// Gradle will replace the variable baseName
+	// with our app name, as defined in settings.gradle
+	archiveFileName = "${archivesBaseName}.war"
+	destinationDirectory = file("../")     // Project workspace directory
+}
