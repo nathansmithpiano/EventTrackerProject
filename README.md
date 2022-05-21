@@ -315,7 +315,7 @@ const routes: Routes = [
 <td>EventsComponent</td>
 </tr>
 <tr>
-<td>unknown</td>
+<td>everything else</td>
 <td>NotFoundComponent</td>
 </tr>
 </table>
