@@ -127,7 +127,9 @@ For simplicity's sake, only two fields are non-null: id (generated, auto-increme
 public class GarminEvent {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(
+        strategy =
+            GenerationType.IDENTITY)
 	private int id;
 
 	private String type;
