@@ -135,7 +135,7 @@ For simplicity's sake, only two fields are **non-null**: id (generated, auto-inc
 
 ## Using the Data
 
-### GarminTrackerJPA
+
 <table>
 <tr>
 <th>JPA Entity (GarminEventJPA)</th>
