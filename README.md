@@ -133,6 +133,7 @@ The database contains only one table, `garmin_event`:
 
 For simplicity's sake, only two fields are **non-null**: id (generated, auto-increment), and type.
 
+## Using the Data
 
 ### GarminTrackerJPA
 <table>
