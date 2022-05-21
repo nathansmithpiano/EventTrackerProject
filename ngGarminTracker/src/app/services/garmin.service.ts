@@ -7,7 +7,10 @@ import { DatePipe } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class GarminService {
-  constructor(private http: HttpClient, private datePipe: DatePipe) {}
+  constructor(
+    private http: HttpClient,
+    private datePipe: DatePipe
+  ) {}
 
   private url = environment.baseUrl + '/api/';
   private events: GarminEvent[] = [];
