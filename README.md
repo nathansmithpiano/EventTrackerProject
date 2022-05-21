@@ -177,6 +177,7 @@ public class GarminEvent {
 
 	@Column(name = "elevation_max")
 	private Integer elevationMax;
+}
 ```
 </td>
 <td>
