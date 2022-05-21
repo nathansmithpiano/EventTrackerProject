@@ -384,8 +384,8 @@ export class GarminEventComponent implements OnInit {
   };
 
   // attempt to obtain event from API
-  private show = (id: Number | null): void => {
-      
+  private show = (id: Number): void => {
+
   };
 }
 ```
