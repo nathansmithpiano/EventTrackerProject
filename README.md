@@ -322,6 +322,8 @@ const routes: Routes = [
 
 ## Single Event
 
+### Validating {id} parameter
+
 When navigating to /events/{id}, I wanted to validate the {id} parameter is truly an integer > 0 and for everything else, to redirect to the not found page.
 
 Invalid examples:
