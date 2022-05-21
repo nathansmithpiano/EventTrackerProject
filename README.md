@@ -68,9 +68,9 @@ Each of these routes speaks to a specific method and mapping in the controller c
 
 
 
+## The Data
 
-
-### garmindb database (mysql)
+### garmindb
 The database contains only one table, `garmin_event`:
 
 ```
@@ -99,6 +99,8 @@ The database contains only one table, `garmin_event`:
 +-----------------+-------------+------+-----+---------+----------------+
 ```
 
+Sample record with id=1:
+
 ```
 +----+---------------+---------------------+-----------------------+----------+----------+----------+--------+--------+------------+-----------------+-----------------+----------+--------+---------+-------------+--------------+---------------+---------------+
 | id | type          | date                | title                 | distance | calories | time     | hr_avg | hr_max | aerobic_te | run_cadence_avg | run_cadence_max | pace_avg | ascent | descent | time_moving | time_elapsed | elevation_min | elevation_max |
@@ -106,3 +108,76 @@ The database contains only one table, `garmin_event`:
 |  1 | Trail Running | 2022-04-03 15:12:06 | Boulder Trail Running |     8.17 |     1426 | 03:36:43 |    112 |    165 |        3.1 |              59 |             248 | 00:26:32 |   7618 |    7608 | 02:41:05    | 03:41:22     |          5706 |          8438 |
 +----+---------------+---------------------+-----------------------+----------+----------+----------+--------+--------+------------+-----------------+-----------------+----------+--------+---------+-------------+--------------+---------------+---------------+
 ```
+
+For simplicity's sake, only two fields are non-null: id (generated, auto-increment), and type.
+
+
+### GarminTrackerJPA
+<table>
+<tr>
+<th>JPA Entity</th>
+<th>Angular model</th>
+</tr>
+<tr>
+<td>
+
+```java
+@Entity
+@Table(name = "garmin_event")
+public class GarminEvent {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	private String type;
+
+	private LocalDateTime date;
+
+	private String title;
+
+	private Double distance;
+
+	private Integer calories;
+
+	private LocalTime time;
+
+	@Column(name = "hr_avg")
+	private Integer hrAvg;
+
+	@Column(name = "hr_max")
+	private Integer hrMax;
+
+	@Column(name = "aerobic_te")
+	private Integer aerobicTe;
+
+	@Column(name = "run_cadence_avg")
+	private Integer runCadenceAvg;
+
+	@Column(name = "run_cadence_max")
+	private Integer runCadenceMax;
+
+	@Column(name = "pace_avg")
+	private LocalTime paceAvg;
+
+	private Integer ascent;
+
+	private Integer descent;
+
+	@Column(name = "time_moving")
+	private LocalTime timeMoving;
+
+	@Column(name = "time_elapsed")
+	private LocalTime timeElapsed;
+
+	@Column(name = "elevation_min")
+	private Integer elevationMin;
+
+	@Column(name = "elevation_max")
+	private Integer elevationMax;
+```
+</td>
+<td>
+</td>
+</tr>
+</table>
