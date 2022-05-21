@@ -293,10 +293,14 @@ For this simple project, only a few routes are needed:
 
 ```typescript
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'events', pathMatch: 'full', component: EventsComponent },
-  { path: 'events/:id', pathMatch: 'full', component: GarminEventComponent },
-  { path: '**', pathMatch: 'full', component: NotFoundComponent }
+  { path: '', pathMatch: 'full',
+        component: HomeComponent },
+  { path: 'events', pathMatch: 'full',
+        component: EventsComponent },
+  { path: 'events/:id', pathMatch: 'full',
+        component: GarminEventComponent },
+  { path: '**', pathMatch: 'full',
+        component: NotFoundComponent }
 ];
 ```
 
@@ -311,7 +315,7 @@ const routes: Routes = [
 <td>EventsComponent</td>
 </tr>
 <tr>
-<td>everything else</td>
+<td>unknown</td>
 <td>NotFoundComponent</td>
 </tr>
 </table>
