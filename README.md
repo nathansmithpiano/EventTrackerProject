@@ -342,38 +342,49 @@ When navigating to /events/{id}, I wanted to validate the {id} parameter is trul
 <td>
 
 ```typescript
-ngOnInit(): void {
-    let eventId:Number | null = this.verifyParameter();
+export class GarminEventComponent implements OnInit {
+  constructor(
+    private gSvc: GarminService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  event: GarminEvent | null = null;
+
+  // called automatically when component is initialized
+  ngOnInit(): void {
+    let eventId: Number | null = this.verifyParam();
     if (eventId) {
-      // show if id parameter is integer and > 0
       this.show(eventId);
-    } else {
-      // handle invalid parameter
-      this.invalidParam();
     }
-}
+  }
 
   // verify and return valid id as integer or null if invalid
-private verifyParameter = (): Number | null => {
+  private verifyParam = (): Number | null => {
     // get param 'id' from route as string (null if param empty)
     let paramString: string | null = this.route.snapshot.paramMap.get('id');
     if (paramString) {
       // reroute to not found if parameter is not an int above 0
-      if (   isNaN(parseInt(paramString)) ||
-             parseInt(paramString).toString() != paramString ||
-             parseFloat(paramString) != parseInt(paramString) ||
-             parseInt(paramString) <= 0 )
-      {
-        console.error('GarminEventComponent ngOnIniti(): invalid parameter: ' + paramString);
+      if (
+        isNaN(parseInt(paramString)) ||
+        parseInt(paramString).toString() != paramString ||
+        parseFloat(paramString) != parseInt(paramString) ||
+        parseInt(paramString) <= 0
+      ) {
+        console.error('invalid parameter: ' + paramString);
       } else {
-        let paramId: Number = parseInt(paramString);
-        console.log('GarminEventComponent ngOnIniti(): proceeding with paramId: ' + paramId);
         // return valid id
+        let paramId: Number = parseInt(paramString);
         return paramId;
       }
     }
-     // in all invalid cases, return null
+    // if param is invalid, redirect to not found and return null
+    this.router.navigateByUrl('/event-not-found/' + paramString);
     return null;
+  };
+
+  // attempt to obtain event from API
+  private show = (id: Number | null): void => {};
 }
 ```
 
