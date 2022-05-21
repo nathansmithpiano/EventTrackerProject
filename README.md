@@ -356,10 +356,12 @@ private verifyParameter = (): Number | null => {
              parseFloat(paramString) != parseInt(paramString) ||
              parseInt(paramString) <= 0 )
       {
-        console.error('GarminEventComponent ngOnIniti(): invalid parameter: ' + paramString + ', rerouting to not found page.');
+        console.error('GarminEventComponent ngOnIniti(): invalid parameter: '  
+            + paramString + ', rerouting to not found page.');
       } else {
         let paramId: Number = parseInt(paramString);
-        console.log('GarminEventComponent ngOnIniti(): proceeding with paramId: ' + paramId);
+        console.log('GarminEventComponent ngOnIniti(): proceeding with paramId: '  
+            + paramId);
         return paramId;
       }
     }
