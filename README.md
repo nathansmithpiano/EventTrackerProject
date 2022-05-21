@@ -384,8 +384,19 @@ export class GarminEventComponent implements OnInit {
   };
 
   // attempt to obtain event from API
-  private show = (id: Number): void => {
-
+  private show = (id: number): void => {
+    this.gSvc.show(id).subscribe(
+      (data) => {
+        this.event = data;
+        // redirect to not found if service returns null
+        if (!this.event) {
+          this.router.navigateByUrl('/event-not-found/' + id);
+        }
+      },
+      (err) => {
+        console.error('GarminEventComponent show(): ' + err);
+      }
+    );
   };
 }
 ```

@@ -52,16 +52,16 @@ export class GarminEventComponent implements OnInit {
   // attempt to obtain event from API
   private show = (id: number): void => {
     this.gSvc.show(id).subscribe(
-      data => {
+      (data) => {
         this.event = data;
         // redirect to not found if service returns null
         if (!this.event) {
           this.router.navigateByUrl('/event-not-found/' + id);
         }
       },
-      err => {
+      (err) => {
         console.error('GarminEventComponent show(): ' + err);
       }
-    )
+    );
   };
 }
