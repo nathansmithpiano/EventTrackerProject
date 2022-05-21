@@ -1,6 +1,8 @@
 package com.skilldistillery.controllers;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +27,11 @@ public class GarminEventController {
 	@Autowired
 	private GarminEventService gSvc;
 	
+	@GetMapping("count")
+	public long count() {
+		return gSvc.count();
+	}
+	
 	@GetMapping("index")
 	public List<GarminEvent> index() {
 		return gSvc.index();
@@ -40,6 +47,20 @@ public class GarminEventController {
 			res.setStatus(404);
 		}
 		return gEvent;
+	}
+	
+	@GetMapping("search/yearcounts/{low}/{high}")
+	public Map<Integer, Integer> findYearCounts(
+			@PathVariable int low,
+			@PathVariable int high
+		) {
+		Map<Integer, Integer> map = new LinkedHashMap<>();
+		for (int i = 0; i <= (high - low); i++) {
+			String lowStr = (low + i) + "-01-01";
+			String highStr = (low + i) + "-12-31";
+			map.put(low + i, gSvc.findByDateBetween(lowStr, highStr).size());
+		}
+		return map;
 	}
 	
 	@GetMapping("search/date/{low}/{high}")
@@ -114,6 +135,16 @@ public class GarminEventController {
 		return gSvc.findByTimeElapsedBetween(low, high);
 	}
 	
+	@GetMapping("total/distance")
+	public Integer findTotalDistance() {
+		return gSvc.getTotalDistance();
+	}
+	
+	@GetMapping("total/calories")
+	public Integer findTotalCalories() {
+		return gSvc.getTotalCalories();
+	}
+	
 	@PostMapping("create")
 	public GarminEvent create(
 			@RequestBody GarminEvent gEvent,
@@ -121,6 +152,7 @@ public class GarminEventController {
 			HttpServletResponse res
 	) {
 		try {
+			System.err.println(gEvent);
 			gSvc.create(gEvent);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
@@ -144,6 +176,8 @@ public class GarminEventController {
 			gSvc.update(gEvent);
 			if (gEvent == null) {
 				res.setStatus(404);
+			} else {
+				res.setStatus(200);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

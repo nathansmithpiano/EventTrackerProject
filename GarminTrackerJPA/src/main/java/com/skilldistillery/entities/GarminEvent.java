@@ -62,6 +62,9 @@ public class GarminEvent {
 	@Column(name = "elevation_min")
 	private Integer elevationMin;
 
+	@Column(name = "elevation_max")
+	private Integer elevationMax;
+
 	public GarminEvent() {
 		super();
 	}
@@ -210,6 +213,14 @@ public class GarminEvent {
 		this.elevationMin = elevationMin;
 	}
 
+	public Integer getElevationMax() {
+		return elevationMax;
+	}
+
+	public void setElevationMax(Integer elevationMax) {
+		this.elevationMax = elevationMax;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -266,6 +277,8 @@ public class GarminEvent {
 		builder.append(timeElapsed);
 		builder.append("\nelevationMin=");
 		builder.append(elevationMin);
+		builder.append("\nelevationMax=");
+		builder.append(elevationMax);
 		builder.append("\n*** END GarminEvent ***");
 		return builder.toString();
 	}

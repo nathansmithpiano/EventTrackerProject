@@ -17,6 +17,11 @@ public class GarminEventServiceImpl implements GarminEventService {
 	
 	@Autowired
 	private GarminEventRepository repo;
+	
+	@Override
+	public long count() {
+		return repo.count();
+	}
 
 	@Override
 	public List<GarminEvent> index() {
@@ -124,6 +129,15 @@ public class GarminEventServiceImpl implements GarminEventService {
 		}
 	}
 
+	@Override
+	public int getTotalDistance() {
+		return repo.totalDistance();
+	}
+
+	@Override
+	public int getTotalCalories() {
+		return repo.totalCalories();
+	}
 	
 
 }

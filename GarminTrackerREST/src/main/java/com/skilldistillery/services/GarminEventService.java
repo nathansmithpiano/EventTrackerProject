@@ -6,6 +6,7 @@ import com.skilldistillery.entities.GarminEvent;
 
 public interface GarminEventService {
 	
+	long count();
 	List<GarminEvent> index();
 	GarminEvent findById(int id);
 	List<GarminEvent> findByDateBetween(String low, String high);
@@ -19,6 +20,8 @@ public interface GarminEventService {
 	GarminEvent create(GarminEvent gEvent);
 	GarminEvent update(GarminEvent gEvent);
 	boolean deleteById(int id);
+	int getTotalDistance();
+	int getTotalCalories();
 	
 
 }

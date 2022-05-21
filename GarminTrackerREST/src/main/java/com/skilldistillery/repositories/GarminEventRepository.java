@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.skilldistillery.entities.GarminEvent;
 
@@ -18,5 +19,10 @@ public interface GarminEventRepository extends JpaRepository<GarminEvent, Intege
 	List<GarminEvent> findByDescentBetween(int low, int high);
 	List<GarminEvent> findByTimeMovingBetween(LocalTime low, LocalTime high);
 	List<GarminEvent> findByTimeElapsedBetween(LocalTime low, LocalTime high);
-
+	
+	@Query("SELECT SUM(ge.distance) FROM GarminEvent ge")
+	int totalDistance();
+	
+	@Query("SELECT SUM(ge.calories) FROM GarminEvent ge")
+	int totalCalories();
 }
