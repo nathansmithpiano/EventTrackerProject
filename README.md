@@ -289,10 +289,15 @@ For this simple project, only a few routes are needed:
 <tr>
 <td>empty</td>
 <td>Home</td>
-<td>
+<td rowspan="3">
 
 ```typescript
-path: '', pathMatch: 'full', component: HomeComponent
+const routes: Routes = [
+  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: 'events', pathMatch: 'full', component: EventsComponent },
+  { path: 'events/:id', pathMatch: 'full', component: GarminEventComponent },
+  { path: '**', pathMatch: 'full', component: NotFoundComponent }
+];
 ```
 
 </td>
@@ -300,16 +305,13 @@ path: '', pathMatch: 'full', component: HomeComponent
 <tr>
 <td>/events</td>
 <td>EventsComponent</td>
-<td>`path: 'events', pathMatch: 'full', component: EventsComponent`</td>
 </tr>
 <tr>
 <td>/events/{id}</td>
 <td>EventsComponent</td>
-<td>`path: 'events/:id', pathMatch: 'full', component: GarminEventComponent `</td>
 </tr>
 <tr>
 <td>everything else</td>
 <td>NotFoundComponent</td>
-<td>`path: '**', pathMatch: 'full', component: NotFoundComponent`</td>
 </tr>
 </table>
