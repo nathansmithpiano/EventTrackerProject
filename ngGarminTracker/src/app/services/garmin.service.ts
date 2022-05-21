@@ -16,9 +16,21 @@ export class GarminService {
     // console.log(this.url + id);
     return this.http.get<GarminEvent>(this.url + id).pipe(
       catchError((err: any) => {
+        // console.log(err);
+        return throwError(
+          'garmin.service.ts.show(id=' + id + ') says: not found (404)'
+        );
+      })
+    );
+  }
+
+  create(event: GarminEvent): Observable<GarminEvent> {
+    console.log(event);
+    return this.http.post<GarminEvent>(this.url + 'create', event).pipe(
+      catchError((err: any) => {
         console.log(err);
         return throwError(
-          'garmin.service.ts.show(id=' + id + ') error: ' + err
+          () => new Error('garmin.service.ts.create: ' + err)
         );
       })
     );

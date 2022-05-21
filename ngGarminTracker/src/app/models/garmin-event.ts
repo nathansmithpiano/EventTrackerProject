@@ -1,6 +1,6 @@
 export class GarminEvent {
-  id: Number;
-  type: String;
+  id: Number | null;
+  type: String | null;
   date: String | null;
   title: String | null;
   distance: Number | null;
@@ -20,8 +20,8 @@ export class GarminEvent {
   elevationMax: Number | null;
 
   constructor(
-    id: Number,
-    type: String,
+    id: Number | null = null,
+    type: String | null = null,
     date: String | null = null,
     title: String | null = null,
     distance: Number | null = null,

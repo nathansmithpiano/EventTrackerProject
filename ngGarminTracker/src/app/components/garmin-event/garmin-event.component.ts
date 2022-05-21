@@ -54,13 +54,11 @@ export class GarminEventComponent implements OnInit {
     this.gSvc.show(id).subscribe(
       (data) => {
         this.event = data;
-        // redirect to not found if service returns null
-        if (!this.event) {
-          this.router.navigateByUrl('/event-not-found/' + id);
-        }
       },
       (err) => {
-        console.error('GarminEventComponent show(): ' + err);
+        // redirect to not found if service throws error
+        console.error('GarminEventComponent show() says: ' + err);
+        this.router.navigateByUrl('/not-found/event/' + id);
       }
     );
   };
