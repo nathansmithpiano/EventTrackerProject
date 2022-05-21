@@ -362,9 +362,11 @@ private verifyParameter = (): Number | null => {
         let paramId: Number = parseInt(paramString);
         console.log('GarminEventComponent ngOnIniti(): proceeding with paramId: '  
             + paramId);
+        // return valid id
         return paramId;
       }
     }
+     // in all invalid cases, return null
     return null;
 }
 ```
