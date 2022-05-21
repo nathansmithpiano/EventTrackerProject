@@ -281,29 +281,41 @@ export class GarminEvent {
 
 For this simple project, only a few routes are needed:
 <table>
-    <tr>
-        <th>Route</th>
-        <th>Component</th>
-        <th>`app.routing.module.ts`</th>
-    </tr>
-    <tr>
-        <td>empty</td>
-        <td>Home</td>
-        <td>`path: '', pathMatch: 'full', component: HomeComponent`</td>
-    </tr>
-    <tr>
-        <td>/events</td>
-        <td>EventsComponent</td>
-        <td>`path: 'events', pathMatch: 'full', component: EventsComponent`</td>
-    </tr>
-    <tr>
-        <td>/events/{id}</td>
-        <td>EventsComponent</td>
-        <td>`path: 'events/:id', pathMatch: 'full', component: GarminEventComponent `</td>
-    </tr>
-    <tr>
-        <td>everything else</td>
-        <td>NotFoundComponent</td>
-        <td>`path: '**', pathMatch: 'full', component: NotFoundComponent`</td>
-    </tr>
+<tr>
+<th>Route</th>
+<th>Component</th>
+<th>
+
+```typescript
+app.routing.module.ts
+```
+
+</th>
+</tr>
+<tr>
+<td>empty</td>
+<td>Home</td>
+<td>
+
+```typescript
+path: '', pathMatch: 'full', component: HomeComponent
+```
+
+</td>
+</tr>
+<tr>
+<td>/events</td>
+<td>EventsComponent</td>
+<td>`path: 'events', pathMatch: 'full', component: EventsComponent`</td>
+</tr>
+<tr>
+<td>/events/{id}</td>
+<td>EventsComponent</td>
+<td>`path: 'events/:id', pathMatch: 'full', component: GarminEventComponent `</td>
+</tr>
+<tr>
+<td>everything else</td>
+<td>NotFoundComponent</td>
+<td>`path: '**', pathMatch: 'full', component: NotFoundComponent`</td>
+</tr>
 </table>
