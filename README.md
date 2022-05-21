@@ -333,7 +333,12 @@ Invalid examples:
 - /events/1.1
 - /events/taco
 
-**`garmin-event.component.ts`**
+<table>
+<tr>
+<th>`garmin-event.component.ts`</th>
+</tr>
+<tr>
+<td>
 
 ```typescript
 ngOnInit(): void {
@@ -372,3 +377,7 @@ private verifyParameter = (): Number | null => {
     return null;
 }
 ```
+
+</td>
+</tr>
+</table>
