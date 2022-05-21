@@ -401,4 +401,33 @@ export class GarminEventComponent implements OnInit {
 
 </td>
 </tr>
+<tr>
+<th><code>garmin.service.ts</code></th>
+</tr>
+<tr>
+<td>
+
+```typescript
+@Injectable({ providedIn: 'root' })
+export class GarminService {
+  constructor(private http: HttpClient, private datePipe: DatePipe) {}
+
+  private url = environment.baseUrl + '/api/';
+  private events: GarminEvent[] = [];
+
+  show(id: number): Observable<GarminEvent> {
+    // console.log(this.url + id);
+    return this.http.get<GarminEvent>(this.url + id).pipe(
+      catchError((err: any) => {
+        // console.log(err);
+        return throwError(
+          'garmin.service.ts.show(id=' + id + ') says: not found (404)'
+        );
+      })
+    );
+  }
+}
+```
+</td>
+</tr>
 </table>
