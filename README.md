@@ -61,3 +61,48 @@ Each of these routes speaks to a specific method and mapping in the controller c
 ### Thoughts For The Future
 
   This is our first weekend project using jparepository.  This simplifies so many things and opens up much more potential for functional queries, nested queries, etc.  I am excited to see where we take this project next week.
+
+
+
+
+
+
+
+
+
+### garmindb database (mysql)
+The database contains only one table, `garmin_event`:
+
+```
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| id              | int(11)     | NO   | PRI | NULL    | auto_increment |
+| type            | varchar(45) | NO   |     | NULL    |                |
+| date            | datetime    | YES  |     | NULL    |                |
+| title           | varchar(45) | YES  |     | NULL    |                |
+| distance        | double      | YES  |     | NULL    |                |
+| calories        | int(11)     | YES  |     | NULL    |                |
+| time            | time        | YES  |     | NULL    |                |
+| hr_avg          | int(11)     | YES  |     | NULL    |                |
+| hr_max          | int(11)     | YES  |     | NULL    |                |
+| aerobic_te      | double      | YES  |     | NULL    |                |
+| run_cadence_avg | int(11)     | YES  |     | NULL    |                |
+| run_cadence_max | int(11)     | YES  |     | NULL    |                |
+| pace_avg        | time        | YES  |     | NULL    |                |
+| ascent          | int(11)     | YES  |     | NULL    |                |
+| descent         | int(11)     | YES  |     | NULL    |                |
+| time_moving     | time        | YES  |     | NULL    |                |
+| time_elapsed    | time        | YES  |     | NULL    |                |
+| elevation_min   | int(11)     | YES  |     | NULL    |                |
+| elevation_max   | int(11)     | YES  |     | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+```
+
+```
++----+---------------+---------------------+-----------------------+----------+----------+----------+--------+--------+------------+-----------------+-----------------+----------+--------+---------+-------------+--------------+---------------+---------------+
+| id | type          | date                | title                 | distance | calories | time     | hr_avg | hr_max | aerobic_te | run_cadence_avg | run_cadence_max | pace_avg | ascent | descent | time_moving | time_elapsed | elevation_min | elevation_max |
++----+---------------+---------------------+-----------------------+----------+----------+----------+--------+--------+------------+-----------------+-----------------+----------+--------+---------+-------------+--------------+---------------+---------------+
+|  1 | Trail Running | 2022-04-03 15:12:06 | Boulder Trail Running |     8.17 |     1426 | 03:36:43 |    112 |    165 |        3.1 |              59 |             248 | 00:26:32 |   7618 |    7608 | 02:41:05    | 03:41:22     |          5706 |          8438 |
++----+---------------+---------------------+-----------------------+----------+----------+----------+--------+--------+------------+-----------------+-----------------+----------+--------+---------+-------------+--------------+---------------+---------------+
+```
