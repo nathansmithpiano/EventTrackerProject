@@ -70,8 +70,9 @@ Each of these routes speaks to a specific method and mapping in the controller c
 
 ## The Data
 
-I use a Garmin Fenix 5 watch to track my activities - typically running and hiking.  
-On [Garmin Connect](https://connect.garmin.com), on the main table, each **activity** is displayed as:
+I use a Garmin Fenix 5 watch to track my activities - typically running and hiking.  For this project, I imported my own personal data from the [Garmin Connect](https://connect.garmin.com) website into the project's database.
+
+On Garmin Connect / Activities, as on 5/21/22, **activities** are displayed in a table with reach row:
 
 ![single activity on the Garmin Connect website](Media/garminconnect_tablerow.png)
 
