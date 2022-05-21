@@ -138,8 +138,8 @@ For simplicity's sake, only two fields are **non-null**: id (generated, auto-inc
 ### GarminTrackerJPA
 <table>
 <tr>
-<th>JPA Entity</th>
-<th>Angular model</th>
+<th>JPA Entity (GarminEventJPA)</th>
+<th>Angular model (ngGarminTracker)</th>
 </tr>
 <tr>
 <td valign="baseline">
