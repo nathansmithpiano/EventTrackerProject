@@ -76,6 +76,10 @@ On Garmin Connect / Activities, as on 5/21/22, **activities** are displayed in a
 
 ![single activity on the Garmin Connect website](Media/garminconnect_tablerow.png)
 
+Data was exported in .csv format and cleaned up via find/replace in [Google Sheets](sheets.google.com) - things like null, dates, numbers with commas, etc.  Next, the cleaned up data was again exported as a .csv and imported into MySQLWorkbench.  
+
+From here, the schema was forward engineered directly into the local server (run on **MAMP**).
+
 ### garmindb
 The database contains only one table, `garmin_event`:
 
