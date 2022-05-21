@@ -289,7 +289,7 @@ For this simple project, only a few routes are needed:
 <tr>
 <td>empty</td>
 <td>Home</td>
-<td rowspan="3">
+<td rowspan="4">
 
 ```typescript
 const routes: Routes = [
