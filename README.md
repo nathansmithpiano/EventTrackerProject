@@ -70,6 +70,11 @@ Each of these routes speaks to a specific method and mapping in the controller c
 
 ## The Data
 
+I use a Garmin Fenix 5 watch to track my activities - typically running and hiking.  
+On [Garmin Connect](https://connect.garmin.com), on the main table, each **activity** is displayed as:
+
+![single activity on the Garmin Connect website](Media/garminconnect_tablerow.png)
+
 ### garmindb
 The database contains only one table, `garmin_event`:
 
