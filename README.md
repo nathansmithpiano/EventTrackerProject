@@ -335,7 +335,7 @@ Invalid examples:
 
 <table>
 <tr>
-<th>`garmin-event.component.ts`</th>
+<th><code>garmin-event.component.ts</code></th>
 </tr>
 <tr>
 <td>
