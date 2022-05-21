@@ -284,13 +284,7 @@ For this simple project, only a few routes are needed:
 <tr>
 <th>Route</th>
 <th>Component</th>
-<th>
-
-```typescript
-app.routing.module.ts
-```
-
-</th>
+<th><code>app.routing.module.ts</code></th>
 </tr>
 <tr>
 <td>empty</td>
