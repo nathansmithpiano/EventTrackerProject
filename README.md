@@ -325,13 +325,14 @@ const routes: Routes = [
 ### Validating {id} parameter
 
 When navigating to /events/{id}, I wanted to validate the {id} parameter is truly an integer > 0 and for everything else, to redirect to the not found page.
-
-Invalid examples:
-- /events/one
-- /events/0
-- /events/-1
-- /events/1.1
-- /events/taco
+- **Valid:**
+    - /events/1
+- **Invalid:**
+    - /events/one
+    - /events/0
+    - /events/-1
+    - /events/1.1
+    - /events/taco
 
 <table>
 <tr>
