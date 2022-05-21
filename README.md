@@ -119,7 +119,7 @@ For simplicity's sake, only two fields are non-null: id (generated, auto-increme
 <th>Angular model</th>
 </tr>
 <tr>
-<td>
+<td valign="baseline">
 
 ```java
 @Entity
@@ -180,7 +180,7 @@ public class GarminEvent {
 }
 ```
 </td>
-<td>
+<td valign="baseline">
 
 ```typescript
 export class GarminEvent {
