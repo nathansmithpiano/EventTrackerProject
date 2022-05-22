@@ -10,3 +10,48 @@
     </div>
   </form>
 </div>
+
+<div *ngIf="isLoading">
+  <h1>LOADING</h1>
+</div>
+
+<div *ngIf="!isLoading">
+  <p>{{ events.length }} events found</p>
+  <!-- Data Table -->
+  <table id="events-table" class="table table-striped" style="width: 100%">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Distance</th>
+        <th>Calories</th>
+        <th>Time</th>
+        <th>Ascent</th>
+        <th>Descent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events" (click)="show(event.id)">
+        <td>{{event.type}}</td>
+        <td>{{event.date}}</td>
+        <td>{{event.title}}</td>
+        <td>{{event.distance}}</td>
+        <td>{{event.calories}}</td>
+        <td>{{event.time}}</td>
+        <td>{{event.ascent}}</td>
+        <td>{{event.descent}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $("#events-table").DataTable();
+  });
+</script> -->

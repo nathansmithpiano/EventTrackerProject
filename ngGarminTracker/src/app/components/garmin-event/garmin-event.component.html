@@ -1,21 +1,53 @@
 <div>
-  <ul>
-    <li>id: {{this.event?.id}}</li>
-    <li>type: {{this.event?.type}}</li>
-    <li>date: {{this.event?.date}}</li>
-    <li>title: {{this.event?.title}}</li>
-    <li>distance: {{this.event?.distance}}</li>
-    <li>calories: {{this.event?.calories}}</li>
-    <li>time: {{this.event?.time}}</li>
-    <li>hrAvg: {{this.event?.hrAvg}}</li>
-    <li>aerobicTe: {{this.event?.aerobicTe}}</li>
-    <li>runCadenceAvg: {{this.event?.runCadenceAvg}}</li>
-    <li>paceAvg: {{this.event?.paceAvg}}</li>
-    <li>ascent: {{this.event?.ascent}}</li>
-    <li>descent: {{this.event?.descent}}</li>
-    <li>timeMoving: {{this.event?.timeMoving}}</li>
-    <li>timeElapsed: {{this.event?.timeElapsed}}</li>
-    <li>elevationMin: {{this.event?.elevationMin}}</li>
-    <li>elevationMax: {{this.event?.elevationMax}}</li>
-  </ul>
+  <div *ngIf="this.mode === 'view'">
+    <ul>
+      <li>id: {{this.event?.id}}</li>
+      <li>type: {{this.event?.type}}</li>
+      <li>date: {{this.event?.date}}</li>
+      <li>title: {{this.event?.title}}</li>
+      <li>distance: {{this.event?.distance}}</li>
+      <li>calories: {{this.event?.calories}}</li>
+      <li>time: {{this.event?.time}}</li>
+      <li>hrAvg: {{this.event?.hrAvg}}</li>
+      <li>aerobicTe: {{this.event?.aerobicTe}}</li>
+      <li>runCadenceAvg: {{this.event?.runCadenceAvg}}</li>
+      <li>paceAvg: {{this.event?.paceAvg}}</li>
+      <li>ascent: {{this.event?.ascent}}</li>
+      <li>descent: {{this.event?.descent}}</li>
+      <li>timeMoving: {{this.event?.timeMoving}}</li>
+      <li>timeElapsed: {{this.event?.timeElapsed}}</li>
+      <li>elevationMin: {{this.event?.elevationMin}}</li>
+      <li>elevationMax: {{this.event?.elevationMax}}</li>
+    </ul>
+  </div>
+
+  <div *ngIf="this.mode === 'edit'">
+    <form>
+        <div class="input-group input-group-sm mb-3">
+          <!-- Type -->
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Type</span>
+          </div>
+          <input type="text" name="type" [(ngModel)]="this.updateEvent.type" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+          <!-- Title -->
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+          </div>
+          <input type="text" name="title" [(ngModel)]="this.updateEvent.title" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        </div>
+    </form>
+  </div>
+
+  <!-- "view" mode buttons -->
+  <div *ngIf="this.mode === 'view'" id="event-buttons view">
+    <button (click)="this.mode = 'edit'; this.updateReset()" type="button" class="btn btn-outline-primary">Edit</button>
+    <button (click)="this.mode = 'delete'" type="button" class="btn btn-outline-danger">Delete</button>
+  </div>
+
+  <!-- "edit" mode buttons -->
+  <div *ngIf="this.mode === 'edit'" id="event-buttons edit">
+    <button (click)="this.update()" type="button" class="btn btn-outline-primary">Update</button>
+    <button (click)="this.updateReset()" type="button" class="btn btn-outline-secondary">Reset</button>
+    <button (click)="this.delete()" type="button" class="btn btn-outline-danger">Delete</button>
+  </div>
 </div>

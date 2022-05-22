@@ -8,6 +8,7 @@ import { GarminService } from 'src/app/services/garmin.service';
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css'],
 })
+
 export class EventsComponent implements OnInit {
   constructor(
     private gSvc: GarminService,
@@ -15,9 +16,14 @@ export class EventsComponent implements OnInit {
     private router: Router
   ) {}
 
+  events: GarminEvent[] = [];
   newEvent: GarminEvent = new GarminEvent();
+  updateEvent: GarminEvent = new GarminEvent();
+  isLoading: boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reload();
+  }
 
   create = (): void => {
     if (this.eventIsValid())
@@ -28,20 +34,44 @@ export class EventsComponent implements OnInit {
         this.newEvent = new GarminEvent();
       },
       (err) => {
-        console.error('GarminEventComponent show(): ' + err);
+        console.error('GarminEventsComponent show(): ' + err);
       }
     );
   };
 
+  // verify valid event before creating
   eventIsValid = (): boolean => {
+    let isValid:boolean = false;
+
     if (this.newEvent.type) {
-      return true;
+      isValid = true;
     } else {
-      return false;
+      isValid = false;
+    }
+
+    return isValid;
+  };
+
+  // when a row is clicked, redirect to the events/{id} page
+  show = (id: Number | null):void => {
+    if (id) {
+      this.router.navigateByUrl('/events/' + id);
+    } else {
+      console.error('GarminEventsComponent show() says: id is null, ' + id);
     }
   };
 
-  private reload = (): void => {
-
+  // attempt to obtain all from API
+  reload = (): void => {
+    this.isLoading = true;
+    this.gSvc.index().subscribe(
+      (data) => {
+        this.events = data;
+        this.isLoading = false;
+      },
+      (err) => {
+        console.error('GarminEventsComponent index() says: ' + err);
+      }
+    );
   };
 }

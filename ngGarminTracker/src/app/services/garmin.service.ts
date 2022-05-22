@@ -15,11 +15,9 @@ export class GarminService {
   private url = environment.baseUrl + '/api/';
   private events: GarminEvent[] = [];
 
-  show(id: number): Observable<GarminEvent> {
-    // console.log(this.url + id);
+  show(id: Number): Observable<GarminEvent> {
     return this.http.get<GarminEvent>(this.url + id).pipe(
       catchError((err: any) => {
-        // console.log(err);
         return throwError(
           'garmin.service.ts.show(id=' + id + ') says: not found (404)'
         );
@@ -27,15 +25,43 @@ export class GarminService {
     );
   }
 
-  create(event: GarminEvent): Observable<GarminEvent> {
-    console.log(event);
-    return this.http.post<GarminEvent>(this.url + 'create', event).pipe(
+  index(): Observable<GarminEvent[]> {
+    return this.http.get<GarminEvent[]>(this.url + 'index').pipe(
       catchError((err: any) => {
-        console.log(err);
         return throwError(
-          () => new Error('garmin.service.ts.create: ' + err)
+          'garmin.service.ts.index says: ' + err
         );
       })
     );
   }
+
+  create(event: GarminEvent): Observable<GarminEvent> {
+    console.log('svc create: ' + event);
+    return this.http.post<GarminEvent>(this.url + 'create', event).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('garmin.service.ts.create says: ' + err)
+        );
+      })
+    );
+  }
+
+  update(event: GarminEvent): Observable<GarminEvent> {
+    // handle dates and other reformatting
+
+    return this.http.put<GarminEvent>(this.url + 'update/' + event.id, event).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('garmin.service.ts.update says: ' + err)
+        );
+      })
+    );
+  }
+
+  destroy(event: GarminEvent):Observable<void> {
+    return this.http.delete<void>(this.url + 'delete/' + event.id);
+  }
+
 }

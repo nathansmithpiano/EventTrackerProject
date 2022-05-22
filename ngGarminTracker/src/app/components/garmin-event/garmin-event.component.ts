@@ -15,7 +15,11 @@ export class GarminEventComponent implements OnInit {
     private router: Router
   ) {}
 
-  event: GarminEvent | null = null;
+  event: GarminEvent = new GarminEvent();
+  updateEvent: GarminEvent = new GarminEvent();
+
+  // "view" mode by default
+  mode: string = "view";
 
   // called automatically when component is initialized
   ngOnInit(): void {
@@ -49,8 +53,8 @@ export class GarminEventComponent implements OnInit {
     return null;
   };
 
-  // attempt to obtain event from API
-  private show = (id: number): void => {
+  // attempt to obtain event by id from API
+  private show = (id: Number): void => {
     this.gSvc.show(id).subscribe(
       (data) => {
         this.event = data;
@@ -62,4 +66,49 @@ export class GarminEventComponent implements OnInit {
       }
     );
   };
+
+  // reset when editing
+  updateReset = (): void => {
+    this.updateEvent = JSON.parse(JSON.stringify(this.event));
+  }
+
+  // attempt to update event and return to 'view' mode
+  update = (): void => {
+    if (this.updateEvent && this.updateEvent.id) {
+      this.gSvc.update(this.updateEvent).subscribe(
+        (data) => {
+          if (this.updateEvent.id) {
+            // show updated event in 'view' mode and reset updateEvent
+            this.show(this.updateEvent.id);
+            this.updateEvent = new GarminEvent();
+            this.mode = 'view';
+          }
+        },
+        (err) => {
+          console.error('GarminEventComponent update() says: ' + err);
+        }
+      )
+    }
+    console.log('update');
+  }
+
+  // attempt to delete and confirmation page
+  delete = (): void => {
+    this.gSvc.destroy(this.event).subscribe(
+      (data) => {
+        // show confirmation page in 'delete-after' mode and reset event
+        this.allReset();
+        this.mode = 'delete-after';
+      },
+      (err) => {
+        console.error('GarminEventComponent delete() says: ' + err);
+      }
+    )
+  }
+
+  private allReset = (): void => {
+    this.event = new GarminEvent();
+    this.updateEvent = new GarminEvent();
+  }
+
 }
