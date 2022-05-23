@@ -64,7 +64,7 @@ Each of these routes speaks to a specific method and mapping in the controller c
     </tr>
     <tr>
         <td>:white_check_mark:</td>
-        <td>DELETE /api/update/{id}</td>
+        <td><code>DELETE</code> /api/update/{id}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/delete/1">Link</a>
         <td>delete single <code>GarminEvent</code></td>
     </tr>
