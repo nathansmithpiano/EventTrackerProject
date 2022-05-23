@@ -586,7 +586,7 @@ When using this form, at various points, may be necessary to reset the data back
 this.event = JSON.parse(JSON.stringify(this.backup));
 ```
 
-#### Create Event
+#### Create Event / Edit Event validation
 
 ![edit event](Media/create_event.png)
 
