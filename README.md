@@ -404,7 +404,7 @@ For viewing or creating an event, one set of inputs were used.  These were not w
 
 Example:
 
-```html
+```typescript
 <div class="card-header">
   <h6 *ngIf="this.mode != 'create'" class="card-title">{{event.title}} on {{eventDate}} (id {{event.id}})</h6>
   <h6 *ngIf="this.mode === 'create'" class="card-title">Create a New Event</h6>
