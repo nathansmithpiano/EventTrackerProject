@@ -48,7 +48,7 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <td>:white_check_mark:</td>
         <td><code>GET</code> /api/{id}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/1">Link</a>
-        <td>single <code>GarminEvent</code></td>
+        <td>single <code>GarminEvent</code> by id (int)</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
@@ -60,25 +60,25 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <td>:white_check_mark:</td>
         <td><code>PUT</code> /api/update/{id}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/update/1">Link</a>
-        <td>update existing <code>GarminEvent</code></td>
+        <td>update existing <code>GarminEvent</code> by id (int)</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td><code>DELETE</code> /api/delete/{id}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/delete/1">Link</a>
-        <td>delete single <code>GarminEvent</code></td>
+        <td>delete single <code>GarminEvent</code> by id (int)</td>
     </tr>
     <tr>
         <td></td>
         <td><code>GET</code> /api/search/distance/{low}/{high}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/distance/1/10">Link</a>
-        <td>search distance range and get many <code>GarminEvent</code></td>
+        <td>search distance range (double) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
         <td><code>GET</code> /api/search/calories/{low}/{high}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/calories/500/1500">Link</a>
-        <td>search calorie range and get many <code>GarminEvent</code></td>
+        <td>search calorie range (int) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
@@ -88,15 +88,27 @@ Each of these routes speaks to a specific method and mapping in the controller c
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/</td>
-        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/">Link</a>
-        <td>search distance range and get many <code>GarminEvent</code></td>
+        <td><code>GET</code> /api/search/time/moving/{low}/{high}</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/time/moving/04:00:00/23:00:00">Link</a>
+        <td>search time moving range (hh-mm-ss) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/</td>
-        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/">Link</a>
-        <td>search distance range and get many <code>GarminEvent</code></td>
+        <td><code>GET</code> /api/search/time/elapsed/{low}/{high}</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/time/elapsed/04:00:00/23:00:00">Link</a>
+        <td>search time elapsed range (hh-mm-ss) and get many <code>GarminEvent</code></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><code>GET</code> /api/search/ascent/{low}/{high}</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/ascent/4000/10000">Link</a>
+        <td>search total ascent range (int) and get many <code>GarminEvent</code></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><code>GET</code> /api/search/descent/{low}/{high}</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/descent/4000/10000">Link</a>
+        <td>search total descent range (int) and get many <code>GarminEvent</code></td>
     </tr>
 </table>
 
