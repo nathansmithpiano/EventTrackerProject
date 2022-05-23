@@ -17,26 +17,41 @@
 
 ### Technologies Used
 
-- Spring Tool Suite 4
-- Visual Studio Code
-- Java
-- MySql
-- MAMP
-- MYSQL Workbench
-- Spring Boot
-- JPA
-- jparepository
-- Gradle
-- Angular
-- DataTables
-- Bootstrap
-- Postman
-- Atom
-- Github
-- Terminal
-- Garmin Connect (for exporting data)
-- Google Chrome
-- MacBook Pro Retina 2015
+<table>
+    <tr>
+        <td>
+            <ul>
+                <li>Spring Tool Suite 4</li>
+                <li>Visual Studio Code</li>
+                <li>Atom</li>
+                <li>Postman</li>
+                <li>MYSQL Workbench</li>
+                <li>Google Chrome</li>
+                <li>Garmin Connect (for exporting data)</li>
+                <li>Terminal</li>
+                <li>Github</li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li>Java</li>
+                <li>JPA</li>
+                <li>Spring</li>
+                <li>Tomcat</li>
+                <li>jparepository</li>
+                <li>Gradle</li>
+                <li>Angular</li>
+                <li>DataTables</li>
+                <li>Bootstrap</li>
+                <li>MAMP</li>
+                <li>MySql</li>
+                <li>MacBook Pro Retina 2015</li>
+                <li></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
 
 ### Thoughts For The Future
 
