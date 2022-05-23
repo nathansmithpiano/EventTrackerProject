@@ -410,3 +410,54 @@ Example:
   <h6 *ngIf="this.mode === 'create'" class="card-title">Create a New Event</h6>
 </div>
 ```
+
+A good deal of effort was put into validating the input.  Rather than using an outside library or bootstrap's own validation, the component does this manually.
+
+For example, the `date` property of `GarminEvent` is a `LocalDateTime` in the JPA and is sent as such in the API.  The Angular model stores this as a `String`, and the `Event` page input displays this as text in the format of `1:02:03 PM`.  Various conversion is necessary - not only to military time but to a string in the format `2022-04-03T15:12:06`.
+
+```typescript
+// verify Time of Day is not empty
+if (!this.timeOfDay) {
+ this.invalid = true;
+ this.addMessage('Time of Day is required');
+} else {
+ // verify time is in correct format
+ // should be in format: 01:02:03 PM
+ let regex = new RegExp('^([0-1]{1}[0-2]{1}|[0]{1}[0-9]{1}):[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}[ ]{1}[A,P]{1}[M]{1}$');
+ if (!regex.test(this.timeOfDay)) {
+   this.invalid = true;
+   this.addMessage('Time of Day must be in format: hh:mm:ss AM/PM (including leading zeros)');
+ } else {
+   // convert to 2022-04-03T15:12:06
+   let newDate = this.datePipe.transform(this.eventDate, 'y-MM-dd');
+   let newTOD = this.timeOfDay;
+   if (!newDate) {
+     this.invalid = true;
+     this.addMessage('ERROR converting Date');
+   } else {
+     // convert to military time
+     let arr = newTOD.split(' ');
+     if (!arr || arr.length != 2) {
+       this.invalid = true;
+       this.addMessage('ERROR converting Time Of Day');
+     } else {
+       if (arr[1] === 'PM') {
+         let arr2 = arr[0].split(':');
+         if (parseInt(arr2[0]) < 12) {
+           // convert hours to military time
+           arr2[0] = (parseInt(arr2[0]) + 12).toString();
+         }
+         newTOD = arr2[0] + ':' + arr2[1] + ':' + arr2[2] + ' PM';
+       }
+     }
+   }
+   if (newTOD.includes('M')) {
+     // remove AM/PM at end
+     newTOD = newTOD.slice(0, newTOD.indexOf('M') - 1);
+     this.event.date = newDate + 'T' + newTOD;
+   } else {
+     this.event.date = newDate + 'T' + newTOD;
+   }
+  }
+}
+```
