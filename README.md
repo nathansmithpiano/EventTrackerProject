@@ -56,73 +56,73 @@ Each of these routes speaks to a specific method and mapping in the controller c
     </tr>
     <tr>
         <td>:white_check_mark:</td>
-        <td><code>GET</code> /api/index</td>
+        <td><code>GET /api/index</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/index">Link</a>
         <td>all <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
-        <td><code>GET</code> /api/{id}</td>
+        <td><code>GET /api/{id}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/1">Link</a>
         <td>single <code>GarminEvent</code> by id (int)</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
-        <td><code>POST</code> /api/create</td>
+        <td><code>POST /api/create</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/create">Link</a>
         <td>create <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
-        <td><code>PUT</code> /api/update/{id}</td>
+        <td><code>PUT /api/update/{id}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/update/1">Link</a>
         <td>update existing <code>GarminEvent</code> by id (int)</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
-        <td><code>DELETE</code> /api/delete/{id}</td>
+        <td><code>DELETE /api/delete/{id}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/delete/1">Link</a>
         <td>delete single <code>GarminEvent</code> by id (int)</td>
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/distance/{low}/{high}</td>
+        <td><code>GET /api/search/distance/{low}/{high}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/distance/1/10">Link</a>
         <td>search distance range (double) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/calories/{low}/{high}</td>
+        <td><code>GET /api/search/calories/{low}/{high}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/calories/500/1500">Link</a>
         <td>search calorie range (int) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/date/{low}/{high}</td>
+        <td><code>GET /api/search/date/{low}/{high}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/date/2019-01-01/2020-12-31">Link</a>
         <td>search date range (yyyy-mm-dd) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/time/moving/{low}/{high}</td>
+        <td><code>GET /api/search/time/moving/{low}/{high}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/time/moving/04:00:00/23:00:00">Link</a>
         <td>search time moving range (hh-mm-ss) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/time/elapsed/{low}/{high}</td>
+        <td><code>GET /api/search/time/elapsed/{low}/{high}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/time/elapsed/04:00:00/23:00:00">Link</a>
         <td>search time elapsed range (hh-mm-ss) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/ascent/{low}/{high}</td>
+        <td><code>GET /api/search/ascent/{low}/{high}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/ascent/4000/10000">Link</a>
         <td>search total ascent range (int) and get many <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td></td>
-        <td><code>GET</code> /api/search/descent/{low}/{high}</td>
+        <td><code>GET /api/search/descent/{low}/{high}</code></td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/descent/4000/10000">Link</a>
         <td>search total descent range (int) and get many <code>GarminEvent</code></td>
     </tr>
