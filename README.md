@@ -604,3 +604,5 @@ setSummaries = (): void => {
 ```
 
 ![summary on the Home page](Media/summary_page.png)
+
+Shoutout to (this codepen)[https://codepen.io/lesliesamafful/pen/oNXgmBG] for the example of cards.
