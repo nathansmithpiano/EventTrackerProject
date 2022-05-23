@@ -39,7 +39,7 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <th>Description</th>
     </tr>
     <tr>
-        <td>[x]</td>
+        <td>:white_check_mark:</td>
         <td>/api/index</td>
         <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/index</td>
         <td>obtain all <code>GarminEvent</code></td>
