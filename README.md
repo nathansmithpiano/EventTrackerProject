@@ -38,28 +38,22 @@
                 <li>MySql</li>
                 <li>MacBook Pro Retina 2015</li>
             </ul>
-
         </td>
         <td>
-            <h5>Languages</h5>
+            <h5>Java</h5>
             <ul>
-                <li>Java
-                    <ul>
-                        <li>JPA</li>
-                        <li>Spring</li>
-                        <li>Tomcat</li>
-                        <li>jparepository</li>
-                        <li>Gradle</li>
-                    </ul>
-                </li>
-                <li>Angular
-                    <ul>
-                        <li>DataTables</li>
-                        <li>Bootstrap</li>
-                        <li>FormsModule</li>
-                        <li>DatePipe</li>
-                    </ul>
-                </li>
+                <li>JPA</li>
+                <li>Spring</li>
+                <li>Tomcat</li>
+                <li>jparepository</li>
+                <li>Gradle</li>
+            </ul>
+            <h5>Angular</h5>
+            <ul>
+                <li>DataTables</li>
+                <li>Bootstrap</li>
+                <li>FormsModule</li>
+                <li>DatePipe</li>
             </ul>
         </td>
     </tr>
