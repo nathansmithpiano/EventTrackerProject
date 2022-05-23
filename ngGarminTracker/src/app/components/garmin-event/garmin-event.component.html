@@ -1,53 +1,99 @@
-<div>
-  <div *ngIf="this.mode === 'view'">
-    <ul>
-      <li>id: {{this.event?.id}}</li>
-      <li>type: {{this.event?.type}}</li>
-      <li>date: {{this.event?.date}}</li>
-      <li>title: {{this.event?.title}}</li>
-      <li>distance: {{this.event?.distance}}</li>
-      <li>calories: {{this.event?.calories}}</li>
-      <li>time: {{this.event?.time}}</li>
-      <li>hrAvg: {{this.event?.hrAvg}}</li>
-      <li>aerobicTe: {{this.event?.aerobicTe}}</li>
-      <li>runCadenceAvg: {{this.event?.runCadenceAvg}}</li>
-      <li>paceAvg: {{this.event?.paceAvg}}</li>
-      <li>ascent: {{this.event?.ascent}}</li>
-      <li>descent: {{this.event?.descent}}</li>
-      <li>timeMoving: {{this.event?.timeMoving}}</li>
-      <li>timeElapsed: {{this.event?.timeElapsed}}</li>
-      <li>elevationMin: {{this.event?.elevationMin}}</li>
-      <li>elevationMax: {{this.event?.elevationMax}}</li>
-    </ul>
-  </div>
+<!-- Hide entire container if loading -->
+<div *ngIf="!isLoading" class="container">
 
-  <div *ngIf="this.mode === 'edit'">
-    <form>
-        <div class="input-group input-group-sm mb-3">
-          <!-- Type -->
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">Type</span>
-          </div>
-          <input type="text" name="type" [(ngModel)]="this.updateEvent.type" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-          <!-- Title -->
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
-          </div>
-          <input type="text" name="title" [(ngModel)]="this.updateEvent.title" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+  <!-- View Event -->
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header">
+      <h6 class="card-title">{{event.title}} on {{eventDate}} (id {{event.id}})</h6>
+    </div>
+
+    <!-- Card Body -->
+    <div class="card-body">
+
+      <!-- Row 1 -->
+      <div class="input-group mb-1">
+        <span class="input-group-text">Date</span>
+        <input type="date" class="form-control" [(ngModel)]="eventDate" [disabled]="disabled" />
+        <div id="dateValidation" class="invalid-feedback">
+          Date is required
         </div>
-    </form>
-  </div>
+        <span class="input-group-text">Time of Day</span>
+        <input type="text" class="form-control" [(ngModel)]="timeOfDay" [disabled]="disabled" />
+        <span class="input-group-text">Time</span>
+        <input type="text" class="form-control" [(ngModel)]="event.time" [disabled]="disabled" required>
+      </div>
+      <!-- Row 2 -->
+      <div class="input-group mb-1">
+        <span class="input-group-text">Type</span>
+        <input type="text" class="form-control" [(ngModel)]="event.type" [disabled]="disabled" required>
+        <span class="input-group-text">Title</span>
+        <input type="text" class="form-control" [(ngModel)]="event.title" [disabled]="disabled" required>
+      </div>
+      <!-- Row 3 -->
+      <div class="input-group mb-1">
+        <span class="input-group-text">Moving Time</span>
+        <input type="text" class="form-control" [(ngModel)]="event.timeMoving" [disabled]="disabled">
+        <span class="input-group-text">Elapsed Time</span>
+        <input type="text" class="form-control" [(ngModel)]="event.timeElapsed" [disabled]="disabled">
+        <span class="input-group-text">Average Pace</span>
+        <input type="text" class="form-control" [(ngModel)]="event.paceAvg" [disabled]="disabled">
+      </div>
+      <!-- Row 4 -->
+      <div class="input-group mb-1">
+        <span class="input-group-text">Distance (mi)</span>
+        <input type="number" step=".01" class="form-control" [(ngModel)]="event.distance" [disabled]="disabled">
+        <span class="input-group-text">Calories</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.calories" [disabled]="disabled">
+        <span class="input-group-text">Average HR</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.hrAvg" [disabled]="disabled">
+        <span class="input-group-text">Max HR</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.hrMax" [disabled]="disabled">
+      </div>
+      <!-- Row 5 -->
+      <div class="input-group mb-1">
+        <span class="input-group-text">Ascent</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.ascent" [disabled]="disabled">
+        <span class="input-group-text">Descent</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.descent" [disabled]="disabled">
+        <span class="input-group-text">Elevation (min)</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.elevationMin" [disabled]="disabled">
+        <span class="input-group-text">Elevation (max)</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.elevationMax" [disabled]="disabled">
+      </div>
+      <!-- Row 6 -->
+      <div class="input-group mb-1">
+        <span class="input-group-text">Aerobic TE</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.aerobicTe" [disabled]="disabled">
+        <span class="input-group-text">Run Cadence (avg)</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.runCadenceAvg" [disabled]="disabled">
+        <span class="input-group-text">Run Cadence (max)</span>
+        <input type="number" step="1" class="form-control" [(ngModel)]="event.runCadenceMax" [disabled]="disabled">
+      </div>
+      <!-- Buttons -->
+      <div class="btn-group" role="group" aria-label="Basic example">
+         <!-- Edit button if disabled (not currently editing) -->
+        <button type="button" *ngIf="mode === 'view'" (click)="beginEdit()" class="btn btn-primary">Edit</button>
 
-  <!-- "view" mode buttons -->
-  <div *ngIf="this.mode === 'view'" id="event-buttons view">
-    <button (click)="this.mode = 'edit'; this.updateReset()" type="button" class="btn btn-outline-primary">Edit</button>
-    <button (click)="this.mode = 'delete'" type="button" class="btn btn-outline-danger">Delete</button>
-  </div>
+         <!-- Update button and reset button if editing -->
+         <button *ngIf="mode === 'edit'" (click)="update()" type="submit" class="btn btn-primary">Update</button>
+         <button *ngIf="mode === 'edit'" (click)="updateReset()" type="button" class="btn btn-secondary">Reset</button>
 
-  <!-- "edit" mode buttons -->
-  <div *ngIf="this.mode === 'edit'" id="event-buttons edit">
-    <button (click)="this.update()" type="button" class="btn btn-outline-primary">Update</button>
-    <button (click)="this.updateReset()" type="button" class="btn btn-outline-secondary">Reset</button>
-    <button (click)="this.delete()" type="button" class="btn btn-outline-danger">Delete</button>
-  </div>
-</div>
+        <!-- Delete button before confirming in both modes -->
+        <button *ngIf="mode != 'delete'" (click)="mode = 'delete'" type="button" class="btn btn-danger">Delete</button>
+
+        <!-- Confirm delete button only after hitting delete once -->
+        <button *ngIf="mode === 'delete'" (click)="delete()" type="button" class="btn btn-danger">Are you sure? Delete cannot be undone</button>
+      </div>
+
+      <!-- Validation Messages -->
+      <div *ngIf="mode != 'view' && invalid" class="alert alert-danger" role="alert">
+        <ul>
+          <li *ngFor="let message of validationMessages">{{message.toString()}}</li>
+        </ul>
+      </div>
+
+    </div> <!-- End card body -->
+  </div> <!-- End card -->
+
+</div><!-- End container -->

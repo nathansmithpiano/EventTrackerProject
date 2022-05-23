@@ -15,7 +15,7 @@ export class GarminService {
   private url = environment.baseUrl + '/api/';
   private events: GarminEvent[] = [];
 
-  show(id: Number): Observable<GarminEvent> {
+  show(id: number): Observable<GarminEvent> {
     return this.http.get<GarminEvent>(this.url + id).pipe(
       catchError((err: any) => {
         return throwError(
