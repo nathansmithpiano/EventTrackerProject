@@ -8,6 +8,12 @@
 
 ### Table of Contents
 [Routes](#routes)
+[The Data](#the-data)
+[Using The Data](#using-the-data)
+[Single Event](#single-event)
+[Multiple Events](#multiple-events)
+[Aggregating Data](#aggregating-data-in-home)
+
 
 ### Technologies Used
 
@@ -121,6 +127,52 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <td>search total descent range (int) and get many <code>GarminEvent</code></td>
     </tr>
 </table>
+
+### Front End Routes
+
+For this simple project, only a few routes are needed:
+<table>
+<tr>
+<th>Route</th>
+<th>Component</th>
+<th><code>app.routing.module.ts</code></th>
+</tr>
+<tr>
+<td>empty</td>
+<td>Home</td>
+<td rowspan="4">
+
+```typescript
+const routes: Routes = [
+  { path: '', pathMatch: 'full',  
+        component: HomeComponent },
+  { path: 'events', pathMatch: 'full',  
+        component: EventsComponent },
+  { path: 'events/:id', pathMatch: 'full',  
+        component: GarminEventComponent },
+  { path: '**', pathMatch: 'full',  
+        component: NotFoundComponent }
+];
+```
+
+</td>
+</tr>
+<tr>
+<td>/events</td>
+<td>EventsComponent</td>
+</tr>
+<tr>
+<td>/events/{id}</td>
+<td>GarminEventComponent</td>
+</tr>
+<tr>
+<td>everything else</td>
+<td>NotFoundComponent</td>
+</tr>
+</table>
+
+Note: the route /events/create is not actually mapped, as the :id parameter "catches" this.  The GarminEvent component manages and redirects this when validating the parameter, as shown below.
+
 
 ## The Data
 
@@ -331,51 +383,6 @@ export class GarminEvent {
 </tr>
 </table>
 
-
-## Front End Routes
-
-For this simple project, only a few routes are needed:
-<table>
-<tr>
-<th>Route</th>
-<th>Component</th>
-<th><code>app.routing.module.ts</code></th>
-</tr>
-<tr>
-<td>empty</td>
-<td>Home</td>
-<td rowspan="4">
-
-```typescript
-const routes: Routes = [
-  { path: '', pathMatch: 'full',  
-        component: HomeComponent },
-  { path: 'events', pathMatch: 'full',  
-        component: EventsComponent },
-  { path: 'events/:id', pathMatch: 'full',  
-        component: GarminEventComponent },
-  { path: '**', pathMatch: 'full',  
-        component: NotFoundComponent }
-];
-```
-
-</td>
-</tr>
-<tr>
-<td>/events</td>
-<td>EventsComponent</td>
-</tr>
-<tr>
-<td>/events/{id}</td>
-<td>GarminEventComponent</td>
-</tr>
-<tr>
-<td>everything else</td>
-<td>NotFoundComponent</td>
-</tr>
-</table>
-
-Note: the route /events/create is not actually mapped, as the :id parameter "catches" this.  The GarminEvent component manages and redirects this when validating the parameter, as shown below.
 
 ## Single Event
 
@@ -663,6 +670,8 @@ setSummaries = (): void => {
     }
 }
 ```
+
+Shoutout to [this StackOverflow solution](https://stackoverflow.com/a/37096512) for the secondsToHms solution which was easily adapted to include days.
 
 Using a `Map` seemed unusual at first but worked just fine in typescript.  At first, I built a controller routing in the REst project to return a `HashMap<Integer, Integer>`, but changed this to simply use `index` in my Angular service.  As I was already going to be going through each event, it made sense to do all aggregating in that same loop.
 
