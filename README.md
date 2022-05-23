@@ -4,11 +4,7 @@
 
 ### Description
 
-  This project uses REST and jparepository to perform CRUD and search procedures through a JSON-based API.  The database consists of one table - garmin_event - containing my personal activities imported through Garmin Connect.
-
-### Cool Features
-
-  It's fun to see an object created and retrieved through JSON and Postman.  It's also interesting to see my real-life activity data displayed and to be able to study, search, etc.  This should prove interesting in future developments of the same data/project.
+  This project uses a REST API via JPA and Spring, along with an Angular frontend, to perform CRUD and search procedures through a JSON-based API.  The database consists of one table - garmin_event - containing my personal activities imported through Garmin Connect.
 
 ### Technologies Used
 
@@ -21,6 +17,9 @@
 - jparepository
 - Gradle
 - Spring Tool Suite 4
+- Angular
+- DataTables
+- Bootstrap
 - Postman
 - Atom
 - Github
@@ -60,13 +59,7 @@ Each of these routes speaks to a specific method and mapping in the controller c
 
 ### Thoughts For The Future
 
-  This is our first weekend project using jparepository.  This simplifies so many things and opens up much more potential for functional queries, nested queries, etc.  I am excited to see where we take this project next week.
-
-
-
-
-
-
+  This project evolved over several steps - first, a JPA project, then adding a Spring REST, then an Angular frontend.  It was surprisingly difficult to get Angular to work with Datatables or any other outside resources.  After trying to integrate many templates and other pre-existing components like ngbootstrap, I settled for only integrating DataTables.  This was only a weekend project, after all.
 
 ## The Data
 
