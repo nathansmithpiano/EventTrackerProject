@@ -41,37 +41,37 @@ Each of these routes speaks to a specific method and mapping in the controller c
     <tr>
         <td>:white_check_mark:</td>
         <td>GET /api/index</td>
-        <td>[link](http://52.52.235.108:8080/GarminTrackerRestApplication/api/index)</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/index">Link</a>>
         <td>all</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>GET /api/{id}</td>
-        <td>[link](http://52.52.235.108:8080/GarminTrackerRestApplication/api/1)</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/1">Link</a>>
         <td>single</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>POST /api/create</td>
-        <td>[link](http://52.52.235.108:8080/GarminTrackerRestApplication/api/create)</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/create">Link</a>>
         <td>create</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>PUT /api/update/{id}</td>
-        <td>[link](http://52.52.235.108:8080/GarminTrackerRestApplication/api/update/1)</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/update/1">Link</a>>
         <td>update</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>DELETE /api/update/{id}</td>
-        <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/delete/1)</td>
+        <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/delete/1">Link</a>>
         <td>delete</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>DELETE /api/search/distance/{low}/{high}</td>
-        <td>[link](http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/distance/1/10)</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/distance/1/10">Link</a>>
         <td>search distance</td>
     </tr>
 </table>
