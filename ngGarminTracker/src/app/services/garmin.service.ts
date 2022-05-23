@@ -12,7 +12,7 @@ export class GarminService {
     private datePipe: DatePipe
   ) {}
 
-  private url = environment.baseUrl + '/api/';
+  private url = environment.baseUrl;
   private events: GarminEvent[] = [];
 
   show(id: number): Observable<GarminEvent> {

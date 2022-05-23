@@ -1,8 +1,8 @@
 <div class="container">
   <div *ngIf="isLoading">
-    <h5>Loading</h5>
+    <h1>LOADING</h1>
   </div>
-  <!-- <div *ngIf="!isLoading"> -->
+  <div *ngIf="!isLoading">
     <!-- Row 1 -->
     <div class="row">
       <div class="col-xl-6 col-md-6">
@@ -49,13 +49,13 @@
 
     <!-- Row 2 -->
     <div class="row">
-      <div class="col-xl-3 col-sm-4 col-12">
+      <div class="col-xl-4 col-sm-4 col-12">
         <div class="card">
           <div class="card-content">
             <div class="card-body">
               <div class="media d-flex">
                 <div class="media-body text-left">
-                  <h3 class="info">{{(totalMiles)}} miles</h3>
+                  <h3 class="info">{{(totalMiles | number:'1.0':'en-US')}} miles</h3>
                   <span>({{marathonEquivalent}} marathons)</span>
                 </div>
                 <div class="align-self-center">
@@ -66,13 +66,13 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-sm-4 col-12">
+      <div class="col-xl-4 col-sm-4 col-12">
         <div class="card">
           <div class="card-content">
             <div class="card-body">
               <div class="media d-flex">
                 <div class="media-body text-left">
-                  <h3 class="warning">{{(totalAscent)}} feet</h3>
+                  <h3 class="warning">{{(totalAscent | number:'1.0':'en-US')}} feet</h3>
                   <span>({{everestEquivalent}} climbs up Mt. Everest)</span>
                 </div>
                 <div class="align-self-center">
@@ -83,13 +83,13 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-sm-4 col-12">
+      <div class="col-xl-4 col-sm-4 col-12">
         <div class="card">
           <div class="card-content">
             <div class="card-body">
               <div class="media d-flex">
                 <div class="media-body text-left">
-                  <h3 class="danger">{{(totalCalories)}} cal</h3>
+                  <h3 class="danger">{{(totalCalories | number:'1.0':'en-US')}} cal</h3>
                   <span>({{oreoEquivalent}} oreos)</span>
                 </div>
                 <div class="align-self-center">
@@ -103,7 +103,7 @@
     </div>
      <!-- Row 3 -->
     <div class="row">
-      <div class="col-xl-3 col-sm-4 col-12">
+      <div class="col-xl-4 col-sm-4 col-12">
         <div class="card">
           <div class="card-content">
             <div class="card-body">
@@ -120,7 +120,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-sm-4 col-12">
+      <div class="col-xl-4 col-sm-4 col-12">
         <div class="card">
           <div class="card-content">
             <div class="card-body">
@@ -137,7 +137,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-sm-4 col-12">
+      <div class="col-xl-4 col-sm-4 col-12">
         <div class="card">
           <div class="card-content">
             <div class="card-body">
@@ -146,7 +146,7 @@
                   <i class="icon-badge secondary font-large-2 float-left"></i>
                 </div>
                 <div class="media-body text-right">
-                  <h3 class="secondary">{{(maxCalories)}}</h3>
+                  <h3 class="secondary">{{(maxCalories | number:'1.0':'en-US')}}</h3>
                   <span>Most Calories Burnt</span>
                 </div>
               </div>
@@ -176,6 +176,6 @@
           </div>
         </div>
       </div>
-
+    </div>
   </div>
 </div>
