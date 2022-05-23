@@ -5,7 +5,8 @@
   <div class="card">
     <!-- Header -->
     <div class="card-header">
-      <h6 class="card-title">{{event.title}} on {{eventDate}} (id {{event.id}})</h6>
+      <h6 *ngIf="this.mode != 'create'" class="card-title">{{event.title}} on {{eventDate}} (id {{event.id}})</h6>
+      <h6 *ngIf="this.mode === 'create'" class="card-title">Create a New Event</h6>
     </div>
 
     <!-- Card Body -->
@@ -71,16 +72,19 @@
         <input type="number" step="1" class="form-control" [(ngModel)]="event.runCadenceMax" [disabled]="disabled">
       </div>
       <!-- Buttons -->
-      <div class="btn-group" role="group" aria-label="Basic example">
+      <div class="btn-group" role="group" aria-label="yay buttons">
+        <!-- Create button if in create mode (not currently editing) -->
+        <button type="button" *ngIf="mode === 'create'" (click)="create()" class="btn btn-primary">Create New Event</button>
+
          <!-- Edit button if disabled (not currently editing) -->
         <button type="button" *ngIf="mode === 'view'" (click)="beginEdit()" class="btn btn-primary">Edit</button>
 
-         <!-- Update button and reset button if editing -->
-         <button *ngIf="mode === 'edit'" (click)="update()" type="submit" class="btn btn-primary">Update</button>
-         <button *ngIf="mode === 'edit'" (click)="updateReset()" type="button" class="btn btn-secondary">Reset</button>
+        <!-- Update button and reset button if editing -->
+        <button *ngIf="mode === 'edit'" (click)="update()" type="submit" class="btn btn-primary">Update</button>
+        <button *ngIf="mode === 'edit'" (click)="updateReset()" type="button" class="btn btn-secondary">Reset</button>
 
-        <!-- Delete button before confirming in both modes -->
-        <button *ngIf="mode != 'delete'" (click)="mode = 'delete'" type="button" class="btn btn-danger">Delete</button>
+        <!-- Delete button before confirming in edit/update modes but not create -->
+        <button *ngIf="mode != 'delete' && mode != 'create'" (click)="mode = 'delete'" type="button" class="btn btn-danger">Delete</button>
 
         <!-- Confirm delete button only after hitting delete once -->
         <button *ngIf="mode === 'delete'" (click)="delete()" type="button" class="btn btn-danger">Are you sure? Delete cannot be undone</button>

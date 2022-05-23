@@ -1,15 +1,3 @@
-<!-- Create new event -->
-<div class="row">
-  <form>
-    <div class="col-sm-auto">
-      <label for="type">Type:</label>
-      <input type="text" name="type" [(ngModel)]="newEvent.type" />
-    </div>
-    <div class="col-sm-auto">
-      <button type="submit" (click)="create()">Create Event</button>
-    </div>
-  </form>
-</div>
 
 <div *ngIf="isLoading">
   <h1>LOADING</h1>

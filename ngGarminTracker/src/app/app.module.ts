@@ -12,7 +12,6 @@ import { GarminEventComponent } from './components/garmin-event/garmin-event.com
 import { TableComponent } from './components/table/table.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { EventsTableComponent } from './components/events-table/events-table.component';
 import { EventsComponent } from './components/events/events.component';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { EventsComponent } from './components/events/events.component';
     GarminEventComponent,
     NotFoundComponent,
     NavBarComponent,
-    EventsTableComponent,
     EventsComponent
   ],
   imports: [

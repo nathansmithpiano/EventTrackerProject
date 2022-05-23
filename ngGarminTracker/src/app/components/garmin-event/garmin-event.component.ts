@@ -48,25 +48,30 @@ export class GarminEventComponent implements OnInit {
 
   // verify and return valid id as integer or null if invalid
   private verifyParam = (): number | null => {
+
     // get param 'id' from route as string (null if param empty)
-    let paramstring: string | null = this.route.snapshot.paramMap.get('id');
-    if (paramstring) {
-      // reroute to not found if parameter is not an int above 0
-      if (
-        isNaN(parseInt(paramstring)) ||
-        parseInt(paramstring).toString() != paramstring ||
-        parseFloat(paramstring) != parseInt(paramstring) ||
-        parseInt(paramstring) <= 0
+    let paramString: string | null = this.route.snapshot.paramMap.get('id');
+    if (paramString) {
+      // re-route if 'create' mode
+      if (paramString === 'create') {
+        this.beginCreate();
+        return null;
+      } else if (
+        // reroute to not found if parameter is not an int above 0
+        isNaN(parseInt(paramString)) ||
+        parseInt(paramString).toString() != paramString ||
+        parseFloat(paramString) != parseInt(paramString) ||
+        parseInt(paramString) <= 0
       ) {
-        console.error('invalid parameter: ' + paramstring);
+        console.error('invalid parameter: ' + paramString);
       } else {
         // return valid id
-        let paramId: number = parseInt(paramstring);
+        let paramId: number = parseInt(paramString);
         return paramId;
       }
     }
     // if param is invalid, redirect to not found and return null
-    this.router.navigateByUrl('/event-not-found/' + paramstring);
+    this.router.navigateByUrl('/event-not-found/' + paramString);
     return null;
   };
 
@@ -78,7 +83,6 @@ export class GarminEventComponent implements OnInit {
         this.event = data;
         this.setEventDate('event');
         this.toggleLoading();
-        console.log(this.event.date);
       },
       (err) => {
         this.toggleLoading();
@@ -87,6 +91,22 @@ export class GarminEventComponent implements OnInit {
         this.router.navigateByUrl('/not-found/event/' + id);
       }
     );
+  };
+
+  create = (): void => {
+    if (this.validateInput()) {
+      this.gSvc.create(this.event).subscribe(
+        (data) => {
+          this.allReset();
+          if (data.id) {
+            this.show(data.id);
+          }
+        },
+        (err) => {
+          console.error('GarminEventsComponent show(): ' + err);
+        }
+      );
+    }
   };
 
   // attempt to update event and return to 'view' mode
@@ -99,10 +119,8 @@ export class GarminEventComponent implements OnInit {
             if (this.event.id) {
               // show updated event in 'view' mode and reset updateEvent
               this.show(this.event.id);
-              this.event = new GarminEvent();
+              this.allReset();
               this.toggleLoading();
-              this.disabled = true;
-              this.mode = 'view';
             }
           },
           (err) => {
@@ -129,6 +147,12 @@ export class GarminEventComponent implements OnInit {
         console.error('GarminEventComponent delete() says: ' + err);
       }
     )
+  }
+
+  beginCreate = (): void => {
+    this.allReset();
+    this.mode = 'create';
+    this.disabled = false;
   }
 
   beginEdit = (): void => {
@@ -185,7 +209,6 @@ export class GarminEventComponent implements OnInit {
       let regex = new RegExp('^([0-1]{1}[0-2]{1}|[0]{1}[0-9]{1}):[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}[ ]{1}[A,P]{1}[M]{1}$');
       if (!regex.test(this.timeOfDay)) {
         this.invalid = true;
-        console.error(this.timeOfDay);
         this.addMessage('Time of Day must be in format: hh:mm:ss AM/PM (including leading zeros)');
       } else {
         // convert to 2022-04-03T15:12:06
@@ -218,7 +241,6 @@ export class GarminEventComponent implements OnInit {
         } else {
           this.event.date = newDate + 'T' + newTOD;
         }
-        console.error(this.event.date);
       }
     }
 
@@ -282,7 +304,6 @@ export class GarminEventComponent implements OnInit {
     this.validatePosInt(this.event.runCadenceAvg, 'Run Cadence (avg)');
     this.validatePosInt(this.event.runCadenceMax, 'Run Cadence (max)');
 
-    console.log('final', this.event);
     return !this.invalid;
   }
 

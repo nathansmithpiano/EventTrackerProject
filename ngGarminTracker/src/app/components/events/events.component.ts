@@ -25,20 +25,6 @@ export class EventsComponent implements OnInit {
     this.reload();
   }
 
-  create = (): void => {
-    if (this.eventIsValid())
-    this.gSvc.create(this.newEvent).subscribe(
-      (data) => {
-        console.log(data);
-        this.reload();
-        this.newEvent = new GarminEvent();
-      },
-      (err) => {
-        console.error('GarminEventsComponent show(): ' + err);
-      }
-    );
-  };
-
   // verify valid event before creating
   eventIsValid = (): boolean => {
     let isValid:boolean = false;
