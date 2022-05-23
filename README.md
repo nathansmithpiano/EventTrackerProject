@@ -173,6 +173,26 @@ const routes: Routes = [
 
 Note: the route /events/create is not actually mapped, as the :id parameter "catches" this.  The GarminEvent component manages and redirects this when validating the parameter, as shown below.
 
+```typescript
+private verifyParam = (): number | null => {
+    // get param 'id' from route as string (null if param empty)
+    let paramString: string | null = this.route.snapshot.paramMap.get('id');
+    if (paramString) {
+        // re-route if 'create' mode
+        if (paramString === 'create') {
+        this.beginCreate();
+        return null; // end function, no show (retrieve)
+        } // else proceed with id
+    }
+}
+
+beginCreate = (): void => {
+    this.allReset(); // reset data and mode
+    this.mode = 'create'; //set mode for ngIf in view
+    this.disabled = false; // enable inputs in view
+  }
+```
+
 
 ## The Data
 
