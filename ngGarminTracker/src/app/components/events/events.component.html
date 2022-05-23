@@ -1,35 +1,45 @@
+<div class="container-fluid">
+  <div *ngIf="isLoading">
+    <h1>LOADING</h1>
+  </div>
 
-<div *ngIf="isLoading">
-  <h1>LOADING</h1>
-</div>
+    <!-- All Events Card -->
+  <div *ngIf="!isLoading" class="card">
+    <!-- Header -->
+    <div class="card-header">
+      <h3>All Events</h3>
+    </div>
 
-<div *ngIf="!isLoading">
-  <p>{{ events.length }} events found</p>
-  <!-- Data Table -->
-  <table id="events-table" datatable class="table row-border hover">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Date</th>
-        <th>Title</th>
-        <th>Distance</th>
-        <th>Calories</th>
-        <th>Time</th>
-        <th>Ascent</th>
-        <th>Descent</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let event of events" (click)="show(event.id)">
-        <td>{{event.type}}</td>
-        <td>{{event.date | date: 'short' }}</td>
-        <td>{{event.title}}</td>
-        <td>{{event.distance}}</td>
-        <td>{{event.calories}}</td>
-        <td>{{event.time}}</td>
-        <td>{{event.ascent}}</td>
-        <td>{{event.descent}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <!-- Card Body -->
+    <div class="card-body">
+      <!-- Data Table -->
+      <table id="events-table" datatable class="table row-border hover">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Distance</th>
+            <th>Calories</th>
+            <th>Time</th>
+            <th>Ascent</th>
+            <th>Descent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events" (click)="show(event.id)">
+            <td>{{event.type}}</td>
+            <td>{{event.date | customDate }}</td>
+            <td>{{event.title}}</td>
+            <td>{{event.distance}}</td>
+            <td>{{event.calories}}</td>
+            <td>{{event.time}}</td>
+            <td>{{event.ascent}}</td>
+            <td>{{event.descent}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> <!-- end card body-->
+  </div> <!-- end card -->
+
+</div><!-- end container -->

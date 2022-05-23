@@ -1,3 +1,4 @@
+import { DatePipePipe } from './../../date-pipe.pipe';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GarminEvent } from 'src/app/models/garmin-event';
@@ -13,7 +14,8 @@ export class EventsComponent implements OnInit {
   constructor(
     private gSvc: GarminService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private customDate: DatePipePipe
   ) {}
 
   events: GarminEvent[] = [];

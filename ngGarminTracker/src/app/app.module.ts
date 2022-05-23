@@ -15,6 +15,7 @@ import { TableComponent } from './components/table/table.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { EventsComponent } from './components/events/events.component';
+import { DatePipePipe } from './date-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EventsComponent } from './components/events/events.component';
     GarminEventComponent,
     NotFoundComponent,
     NavBarComponent,
-    EventsComponent
+    EventsComponent,
+    DatePipePipe
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { EventsComponent } from './components/events/events.component';
     FormsModule,
     DataTablesModule
   ],
-  providers: [GarminService, DatePipe],
+  providers: [GarminService, DatePipe, DatePipePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
