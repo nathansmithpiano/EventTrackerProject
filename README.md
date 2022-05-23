@@ -7,9 +7,8 @@
   This project uses a REST API via JPA and Spring, along with an Angular frontend, to perform CRUD and search procedures through a JSON-based API.  The database consists of one table - garmin_event - containing my personal activities imported through Garmin Connect.
 
 ### Table of Contents
-[Routes](#routes)
-
-[The Data](#the-data)
+- 1. [Routes](#routes)
+- 2. [The Data](#the-data)
 
 [Using The Data](#using-the-data)
 
