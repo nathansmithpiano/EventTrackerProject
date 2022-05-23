@@ -74,6 +74,30 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/distance/1/10">Link</a>
         <td>search distance range and get many <code>GarminEvent</code></td>
     </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td><code>GET</code> /api/search/calories/{low}/{high}</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/calories/500/1500">Link</a>
+        <td>search calorie range and get many <code>GarminEvent</code></td>
+    </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td><code>GET</code> /api/search/date/{low}/{high}</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/date/2019-01-01/2020-12-31">Link</a>
+        <td>search date range (yyyy-mm-dd) and get many <code>GarminEvent</code></td>
+    </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td><code>GET</code> /api/search/</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/">Link</a>
+        <td>search distance range and get many <code>GarminEvent</code></td>
+    </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td><code>GET</code> /api/search/</td>
+        <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/">Link</a>
+        <td>search distance range and get many <code>GarminEvent</code></td>
+    </tr>
 </table>
 
 - http://localhost:8082/api/index : display all objects in GarminEvent table
