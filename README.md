@@ -292,6 +292,8 @@ const routes: Routes = [
         component: EventsComponent },
   { path: 'events/:id', pathMatch: 'full',  
         component: GarminEventComponent },
+  { path: 'events/create', pathMatch: 'full',  
+        component: GarminEventComponent },
   { path: '**', pathMatch: 'full',  
         component: NotFoundComponent }
 ];
@@ -305,7 +307,11 @@ const routes: Routes = [
 </tr>
 <tr>
 <td>/events/{id}</td>
-<td>EventsComponent</td>
+<td>GarminEventComponent</td>
+</tr>
+<tr>
+<td>/events/create</td>
+<td>GarminEventComponent</td>
 </tr>
 <tr>
 <td>everything else</td>
@@ -335,61 +341,35 @@ When navigating to /events/{id}, I wanted to validate the {id} parameter is trul
 <td>
 
 ```typescript
-export class GarminEventComponent implements OnInit {
-  constructor(
-    private gSvc: GarminService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
 
-  event: GarminEvent | null = null;
+// verify and return valid id as integer or null if invalid
+private verifyParam = (): number | null => {
 
-  // called automatically when component is initialized
-  ngOnInit(): void {
-    let eventId: Number | null = this.verifyParam();
-    if (eventId) {
-      this.show(eventId);
-    }
-  }
-
-  // verify and return valid id as integer or null if invalid
-  private verifyParam = (): Number | null => {
-    // get param 'id' from route as string (null if param empty)
-    let paramString: string | null = this.route.snapshot.paramMap.get('id');
-    if (paramString) {
-      // reroute to not found if parameter is not an int above 0
-      if (
-        isNaN(parseInt(paramString)) ||
-        parseInt(paramString).toString() != paramString ||
-        parseFloat(paramString) != parseInt(paramString) ||
-        parseInt(paramString) <= 0
-      ) {
-        console.error('invalid parameter: ' + paramString);
-      } else {
-        // return valid id
-        let paramId: Number = parseInt(paramString);
-        return paramId;
-      }
-    }
-    // if param is invalid, redirect to not found and return null
-    this.router.navigateByUrl('/event-not-found/' + paramString);
+// get param 'id' from route as string (null if param empty)
+let paramString: string | null = this.route.snapshot.paramMap.get('id');
+if (paramString) {
+  // re-route if 'create' mode
+  if (paramString === 'create') {
+    this.beginCreate();
     return null;
-  };
-
-  // attempt to obtain event from API
-  private show = (id: number): void => {
-    this.gSvc.show(id).subscribe(
-      (data) => {
-        this.event = data;
-      },
-      (err) => {
-        // redirect to not found if service throws error
-        console.error('GarminEventComponent show() says: ' + err);
-        this.router.navigateByUrl('/not-found/event/' + id);
-      }
-    );
-  };
+  } else if (
+    // reroute to not found if parameter is not an int above 0
+    isNaN(parseInt(paramString)) ||
+    parseInt(paramString).toString() != paramString ||
+    parseFloat(paramString) != parseInt(paramString) ||
+    parseInt(paramString) <= 0
+  ) {
+    console.error('invalid parameter: ' + paramString);
+  } else {
+    // return valid id
+    let paramId: number = parseInt(paramString);
+    return paramId;
+  }
 }
+// if param is invalid, redirect to not found and return null
+this.router.navigateByUrl('/event-not-found/' + paramString);
+return null;
+};
 ```
 
 </td>
@@ -401,29 +381,17 @@ export class GarminEventComponent implements OnInit {
 <td>
 
 ```typescript
-@Injectable({ providedIn: 'root' })
-export class GarminService {
-    constructor(
-      private http: HttpClient,
-      private datePipe: DatePipe
-    ) {}
-
-  private url = environment.baseUrl + '/api/';
-  private events: GarminEvent[] = [];
-
-  show(id: number): Observable<GarminEvent> {
-    // console.log(this.url + id);
-    return this.http.get<GarminEvent>(this.url + id).pipe(
-      catchError((err: any) => {
-        // console.log(err);
-        return throwError(
-          'garmin.service.ts.show(id=' + id + ') says: not found (404)'
-        );
-      })
-    );
-  }
+show(id: number): Observable<GarminEvent> {
+  return this.http.get<GarminEvent>(this.url + id).pipe(
+    catchError((err: any) => {
+      return throwError(
+        'garmin.service.ts.show(id=' + id + ') says: not found (404)'
+      );
+    })
+  );
 }
 ```
+
 </td>
 </tr>
 </table>
