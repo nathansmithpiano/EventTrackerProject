@@ -19,7 +19,7 @@
 
 <table>
     <tr>
-        <td>
+        <td valign="baseline">
             <h5>Development Tools</h5>
             <ul>
                 <li>Spring Tool Suite 4</li>
@@ -39,7 +39,7 @@
                 <li>MacBook Pro Retina 2015</li>
             </ul>
         </td>
-        <td>
+        <td valign="baseline">
             <h5>Java</h5>
             <ul>
                 <li>JPA</li>
