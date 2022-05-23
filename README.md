@@ -42,31 +42,31 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <td>:white_check_mark:</td>
         <td>GET /api/index</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/index">Link</a>
-        <td>all `GarminEvent`</td>
+        <td>all <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>GET /api/{id}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/1">Link</a>
-        <td>single `GarminEvent`</td>
+        <td>single <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>POST /api/create</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/create">Link</a>
-        <td>create `GarminEvent`</td>
+        <td>create <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>PUT /api/update/{id}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/update/1">Link</a>
-        <td>update existing `GarminEvent`</td>
+        <td>update existing <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
         <td>DELETE /api/update/{id}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/delete/1">Link</a>
-        <td>delete single `GarminEvent`</td>
+        <td>delete single <code>GarminEvent</code></td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
