@@ -8,10 +8,15 @@
 
 ### Table of Contents
 [Routes](#routes)
+
 [The Data](#the-data)
+
 [Using The Data](#using-the-data)
+
 [Single Event](#single-event)
+
 [Multiple Events](#multiple-events)
+
 [Aggregating Data](#aggregating-data-in-home)
 
 
