@@ -25,7 +25,6 @@
     </tr>
     <tr>
         <td valign="baseline">
-            <h5>Development Tools</h5>
             <ul>
                 <li>Spring Tool Suite 4</li>
                 <li>Visual Studio Code</li>
@@ -56,7 +55,6 @@
             </ul>
         </td>
         <td>
-            <h5>Other</h5>
             <ul>
                 <li>MAMP</li>
                 <li>MySql</li>
