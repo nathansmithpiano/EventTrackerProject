@@ -28,7 +28,13 @@
 - Google Chrome
 - MacBook Pro Retina 2015
 
-### Routes
+### Thoughts For The Future
+
+This project evolved over several steps - first, a JPA project, then adding a Spring REST, then an Angular frontend.  It was surprisingly difficult to get Angular to work with Datatables or any other outside resources.  After trying to integrate many templates and other pre-existing components like ngbootstrap, I settled for only integrating DataTables.  This was only a weekend project, after all.
+
+Many of the routes were not used in the front end. It seems more efficient to create a custom `pipe` to handle filtering, rather than building an actual route for this. I imagine this would not be the case if other resources were consuming my data, and/or server efficiency would be a factor.
+
+## Routes
 Each of these routes speaks to a specific method and mapping in the controller class.  Parameters and/or JSON body is received by the controller, which sends data or a request to the corresponding method in the service class, which in turn sends data or a request to the repository, which may or may not use an implemented method from the jparepository interface.
 
 <table>
@@ -111,37 +117,6 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <td>search total descent range (int) and get many <code>GarminEvent</code></td>
     </tr>
 </table>
-
-- http://localhost:8082/api/index : display all objects in GarminEvent table
-- http://localhost:8082/api/1 : display one specific GarminEvent by id
-- http://localhost:8082/api/create : create new GarminEvent
-- http://localhost:8082/api/update/1 : update by id (int)
-- http://localhost:8082/api/delete/1 : delete by id (int)
-- http://localhost:8082/api/search/distance/1/10 : search by distance between (double low /double high)
-- http://localhost:8082/api/search/calories/500/1500 : search by calories burnt between (int low / int high)
-- http://localhost:8082/api/search/date/2019-01-01/2020-12-31 : search by date between (yyyy-mm-dd low / yyyy-mm-dd high)
-- http://localhost:8082/api/search/time/moving/04:00:00/23:00:00 : search by time moving between (hh-mm-ss low / hh-mm-ss high)
-- http://localhost:8082/api/search/time/elapsed/04:00:00/23:00:00 : search by time elapsed between (hh-mm-ss low / hh-mm-ss high)
-- http://localhost:8082/api/search/ascent/5000/50000 : search by total ascent between (int low / int high)
-- http://localhost:8082/api/search/descent/5000/50000 : search by total descent between (int low / int high)
-
-### AWS routes
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/index : display all objects in GarminEvent table
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/1 : display one specific GarminEvent by id
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/create : create new GarminEvent
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/update/1 : update by id (int)
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/delete/1 : delete by id (int)
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/distance/1/10 : search by distance between (double low /double high)
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/calories/500/1500 : search by calories burnt between (int low / int high)
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/date/2019-01-01/2020-12-31 : search by date between (yyyy-mm-dd low / yyyy-mm-dd high)
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/time/moving/04:00:00/23:00:00 : search by time moving between (hh-mm-ss low / hh-mm-ss high)
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/time/elapsed/04:00:00/23:00:00 : search by time elapsed between (hh-mm-ss low / hh-mm-ss high)
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/ascent/5000/50000 : search by total ascent between (int low / int high)
-- http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/descent/5000/50000 : search by total descent between (int low / int high)
-
-### Thoughts For The Future
-
-  This project evolved over several steps - first, a JPA project, then adding a Spring REST, then an Angular frontend.  It was surprisingly difficult to get Angular to work with Datatables or any other outside resources.  After trying to integrate many templates and other pre-existing components like ngbootstrap, I settled for only integrating DataTables.  This was only a weekend project, after all.
 
 ## The Data
 
@@ -475,9 +450,7 @@ show(id: number): Observable<GarminEvent> {
 </tr>
 </table>
 
-## Single Event
-
-### Viewing or Creating an EventTrackerProject
+### Viewing or Creating an event
 For viewing or creating an event, one set of inputs were used.  These were not within to a form but rather bound to data in the component.  Inputs are disabled/enabled and various button options 'hidden' via,`ngModel`, `ngIf`, and `ngClass` in the html.
 
 Example:
@@ -546,7 +519,9 @@ When using this form, at various points, may be necessary to reset the data back
 this.event = JSON.parse(JSON.stringify(this.backup));
 ```
 
-## Integrating Datatables
+## Multiple Events
+
+### Integrating Datatables
 
 This was surprisingly difficult, perhaps because it was my first time trying to integrate an outside resource other than bootstrap, DatePipe, etc.  I attempted to use things like `PrimeNG` and `ngBootstrap` but this proved time consuming and for the purposes of this project unnecessary.
 
@@ -681,6 +656,26 @@ setSummaries = (): void => {
       return d + ' days, ' + h + ' hrs, ' + m + ' min';
     } else {
       return h + ' hrs, ' + m + ' min';
+    }
+}
+```
+
+Using a `Map` seemed unusual at first but worked just fine in typescript.  At first, I built a controller routing in the REst project to return a `HashMap<Integer, Integer>`, but changed this to simply use `index` in my Angular service.  As I was already going to be going through each event, it made sense to do all aggregating in that same loop.
+
+```typescript
+yearCounts: Map<number, number> = new Map<number, number>();
+
+for (let evt of this.events) {
+    let date: Date = new Date(Date.parse(evt.date));
+
+    let year = date.getFullYear();
+    if (this.yearCounts.has(year)) {
+        let count = this.yearCounts.get(year);
+        if (count) {
+          this.yearCounts.set(year, count + 1);
+        }
+    } else {
+    this.yearCounts.set(year, 1);
     }
 }
 ```
