@@ -19,6 +19,11 @@
 
 <table>
     <tr>
+        <th>Tools</th>
+        <th>Languages</th>
+        <th>Other</th>
+    </tr>
+    <tr>
         <td valign="baseline">
             <h5>Development Tools</h5>
             <ul>
