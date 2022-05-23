@@ -54,7 +54,7 @@
                 <li>DatePipe</li>
             </ul>
         </td>
-        <td>
+        <td valign="baseline">
             <ul>
                 <li>MAMP</li>
                 <li>MySql</li>
