@@ -72,7 +72,7 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <td>:white_check_mark:</td>
         <td>DELETE /api/search/distance/{low}/{high}</td>
         <td><a href="http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/distance/1/10">Link</a>
-        <td>search distance range and get many `GarminEvent`</td>
+        <td>search distance range and get many <code>GarminEvent</code></td>
     </tr>
 </table>
 
