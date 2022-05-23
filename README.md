@@ -9,14 +9,10 @@
 ### Table of Contents
 1. [Routes](#routes)
 2. [The Data](#the-data)
-
-[Using The Data](#using-the-data)
-
-[Single Event](#single-event)
-
-[Multiple Events](#multiple-events)
-
-[Aggregating Data](#aggregating-data-in-home)
+3. [Using The Data](#using-the-data)
+4. [Single Event](#single-event)
+5. [Multiple Events](#multiple-events)
+6. [Aggregating Data](#aggregating-data-in-home)
 
 
 ### Technologies Used
