@@ -42,7 +42,13 @@ Each of these routes speaks to a specific method and mapping in the controller c
         <td>:white_check_mark:</td>
         <td>/api/index</td>
         <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/index</td>
-        <td>obtain all <code>GarminEvent</code></td>
+        <td>all <code>GarminEvent</code></td>
+    </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td>/api/events/{id}</td>
+        <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/1</td>
+        <td>single <code>GarminEvent</code></td>
     </tr>
 </table>
 
