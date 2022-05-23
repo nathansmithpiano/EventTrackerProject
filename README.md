@@ -32,12 +32,6 @@
                 <li>Terminal</li>
                 <li>Github</li>
             </ul>
-            <h5>Other</h5>
-            <ul>
-                <li>MAMP</li>
-                <li>MySql</li>
-                <li>MacBook Pro Retina 2015</li>
-            </ul>
         </td>
         <td valign="baseline">
             <h5>Java</h5>
@@ -54,6 +48,14 @@
                 <li>Bootstrap</li>
                 <li>FormsModule</li>
                 <li>DatePipe</li>
+            </ul>
+        </td>
+        <td>
+            <h5>Other</h5>
+            <ul>
+                <li>MAMP</li>
+                <li>MySql</li>
+                <li>MacBook Pro Retina 2015</li>
             </ul>
         </td>
     </tr>
