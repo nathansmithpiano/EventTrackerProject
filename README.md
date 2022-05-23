@@ -20,6 +20,7 @@
 <table>
     <tr>
         <td>
+            <h5>Development Tools</h5>
             <ul>
                 <li>Spring Tool Suite 4</li>
                 <li>Visual Studio Code</li>
@@ -31,22 +32,34 @@
                 <li>Terminal</li>
                 <li>Github</li>
             </ul>
-        </td>
-        <td>
+            <h5>Other</h5>
             <ul>
-                <li>Java</li>
-                <li>JPA</li>
-                <li>Spring</li>
-                <li>Tomcat</li>
-                <li>jparepository</li>
-                <li>Gradle</li>
-                <li>Angular</li>
-                <li>DataTables</li>
-                <li>Bootstrap</li>
                 <li>MAMP</li>
                 <li>MySql</li>
                 <li>MacBook Pro Retina 2015</li>
-                <li></li>
+            </ul>
+
+        </td>
+        <td>
+            <h5>Languages</h5>
+            <ul>
+                <li>Java
+                    <ul>
+                        <li>JPA</li>
+                        <li>Spring</li>
+                        <li>Tomcat</li>
+                        <li>jparepository</li>
+                        <li>Gradle</li>
+                    </ul>
+                </li>
+                <li>Angular
+                    <ul>
+                        <li>DataTables</li>
+                        <li>Bootstrap</li>
+                        <li>FormsModule</li>
+                        <li>DatePipe</li>
+                    </ul>
+                </li>
             </ul>
         </td>
     </tr>
