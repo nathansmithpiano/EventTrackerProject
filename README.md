@@ -30,6 +30,20 @@
 
 ### Routes
 Each of these routes speaks to a specific method and mapping in the controller class.  Parameters and/or JSON body is received by the controller, which sends data or a request to the corresponding method in the service class, which in turn sends data or a request to the repository, which may or may not use an implemented method from the jparepository interface.
+
+<table>
+    <tr>
+        <th>Local</th>
+        <th>AWS</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>http://localhost:8082/api/index</td>
+        <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/index</td>
+        <td>obtain all <code>GarminEvent</code></td>
+    </tr>
+</table>
+
 - http://localhost:8082/api/index : display all objects in GarminEvent table
 - http://localhost:8082/api/1 : display one specific GarminEvent by id
 - http://localhost:8082/api/create : create new GarminEvent
