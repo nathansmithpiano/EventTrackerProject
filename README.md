@@ -753,6 +753,6 @@ for (let evt of this.events) {
 }
 ```
 
-![summary on the Home page](Media/summary_page.png)
+![summary on the Home page](Media/home_summary.png)
 
 Shoutout to [this codepen](https://codepen.io/lesliesamafful/pen/oNXgmBG) for the example of cards.
