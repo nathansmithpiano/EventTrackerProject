@@ -35,6 +35,16 @@ export class GarminService {
     );
   }
 
+  search(str: string): Observable<GarminEvent[]> {
+    return this.http.get<GarminEvent[]>(this.url + str).pipe(
+      catchError((err: any) => {
+        return throwError(
+          'garmin.service.ts.search (str: ' + str + ') says: ' + err
+        );
+      })
+    );
+  }
+
   create(event: GarminEvent): Observable<GarminEvent> {
     console.log('svc create: ' + event);
     return this.http.post<GarminEvent>(this.url + 'create', event).pipe(

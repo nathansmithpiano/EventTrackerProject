@@ -1,1 +1,181 @@
-<p>home works!</p>
+<div class="container">
+  <div *ngIf="isLoading">
+    <h5>Loading</h5>
+  </div>
+  <!-- <div *ngIf="!isLoading"> -->
+    <!-- Row 1 -->
+    <div class="row">
+      <div class="col-xl-6 col-md-6">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body cleartfix">
+              <div class="media align-items-stretch">
+                <div class="align-self-center">
+                  <i class="icon-compass success font-large-2 mr-2"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="success">Total Events</h4>
+                  <span>All Garmin Events</span>
+                </div>
+                <div class="align-self-center">
+                  <h1 class="success">{{totalEvents}}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-md-6">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body cleartfix">
+              <div class="media align-items-stretch">
+                <div class="align-self-center">
+                  <i class="icon-clock primary font-large-2 mr-2"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="primary">{{totalTime}}</h4>
+                  <span>Total Time</span>
+                </div>
+                <!-- <div class="align-self-center">
+                  <h3 class="primary">Total Time</h3>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col-xl-3 col-sm-4 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="info">{{(totalMiles)}} miles</h3>
+                  <span>({{marathonEquivalent}} marathons)</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-rocket info font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-4 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="warning">{{(totalAscent)}} feet</h3>
+                  <span>({{everestEquivalent}} climbs up Mt. Everest)</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-moustache warning font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-4 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="danger">{{(totalCalories)}} cal</h3>
+                  <span>({{oreoEquivalent}} oreos)</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-fire danger font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- Row 3 -->
+    <div class="row">
+      <div class="col-xl-3 col-sm-4 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-badge secondary font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3 class="secondary">{{(maxDistance)}} miles</h3>
+                  <span>Greatest Distance</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-4 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-badge secondary font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3 class="secondary">{{(maxTime)}}</h3>
+                  <span>Longest Time</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-4 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-badge secondary font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3 class="secondary">{{(maxCalories)}}</h3>
+                  <span>Most Calories Burnt</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Year Summaries -->
+    <div class="row">
+      <h3>Events Per Year</h3>
+      <div *ngFor="let year of yearCounts | keyvalue" class="col-xl-2 col-sm-2 col-2">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="dark">{{year.value}}</h3>
+                  <span>{{year.key}}</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-calendar dark font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>

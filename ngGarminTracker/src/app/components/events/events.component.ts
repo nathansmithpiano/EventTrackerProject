@@ -21,6 +21,7 @@ export class EventsComponent implements OnInit {
   updateEvent: GarminEvent = new GarminEvent();
   isLoading: boolean = false;
 
+
   ngOnInit(): void {
     this.reload();
   }

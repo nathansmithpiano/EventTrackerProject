@@ -7,18 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarDiv">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <a [routerLink]="['']" class="nav-link active">Home</a>
+          <a [routerLink]="['']" [ngClass]="getRoute() === 'home' ? 'nav-link active' : 'nav-link'">Home</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/events']" class="nav-link">Events Table</a>
+          <a [routerLink]="['/events']" [ngClass]="getRoute() === 'events' ? 'nav-link active' : 'nav-link'">All Events</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/events/create']" class="nav-link">Create Event</a>
+          <a [routerLink]="['/events/create']" [ngClass]="getRoute() === 'create' ? 'nav-link active' : 'nav-link'">Create Event</a>
         </li>
       </ul>
       <!-- Text, aligned right -->
       <span class="navbar-text ms-auto">
-        Created by Nathan Smith for SD32
+        Created by Nathan Smith for Skill Distillery SD32
       </span>
     </div>
   </div>

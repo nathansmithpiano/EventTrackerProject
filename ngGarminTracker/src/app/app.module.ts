@@ -1,6 +1,8 @@
+import { DataTablesModule } from 'angular-datatables';
+
 import { NgModule, Pipe } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
@@ -22,18 +24,16 @@ import { EventsComponent } from './components/events/events.component';
     GarminEventComponent,
     NotFoundComponent,
     NavBarComponent,
-    EventsComponent
+    EventsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DataTablesModule,
   ],
-  providers: [
-    GarminService,
-    DatePipe
-  ],
-  bootstrap: [AppComponent]
+  providers: [GarminService, DatePipe],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -6,7 +6,7 @@
 <div *ngIf="!isLoading">
   <p>{{ events.length }} events found</p>
   <!-- Data Table -->
-  <table id="events-table" class="table table-striped" style="width: 100%">
+  <table id="events-table" datatable class="table row-border hover">
     <thead>
       <tr>
         <th>Type</th>
@@ -22,7 +22,7 @@
     <tbody>
       <tr *ngFor="let event of events" (click)="show(event.id)">
         <td>{{event.type}}</td>
-        <td>{{event.date}}</td>
+        <td>{{event.date | date: 'short' }}</td>
         <td>{{event.title}}</td>
         <td>{{event.distance}}</td>
         <td>{{event.calories}}</td>
@@ -33,13 +33,3 @@
     </tbody>
   </table>
 </div>
-
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
-
-<script>
-  $(document).ready(function () {
-    $("#events-table").DataTable();
-  });
-</script> -->
