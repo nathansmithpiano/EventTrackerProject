@@ -525,6 +525,10 @@ Example:
 
 ![view event](Media/view_event.png)
 
+#### Edit Event
+
+![edit event](Media/edit_event.png)
+
 A good deal of effort was put into validating the input.  Rather than using an outside library or bootstrap's own validation, the component does this manually.
 
 For example, the `date` property of `GarminEvent` is a `LocalDateTime` in the JPA and is sent as such in the API.  The Angular model stores this as a `String`, and the `Event` page input displays this as text in the format of `1:02:03 PM`.  Various conversion is necessary - not only to military time but to a string in the format `2022-04-03T15:12:06`.
@@ -581,9 +585,6 @@ When using this form, at various points, may be necessary to reset the data back
 ```typescript
 this.event = JSON.parse(JSON.stringify(this.backup));
 ```
-#### Edit Event
-
-![edit event](Media/edit_event.png)
 
 #### Create Event
 
