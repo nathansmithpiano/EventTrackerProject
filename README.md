@@ -461,3 +461,9 @@ if (!this.timeOfDay) {
   }
 }
 ```
+
+When using this form, at various points, may be necessary to reset the data back to the `event` obtained from the API.  Rather than using `Object.assign` or manually copying all properties, I used JSON to perform a deep copy.
+
+```typescript
+this.event = JSON.parse(JSON.stringify(this.backup));
+```
