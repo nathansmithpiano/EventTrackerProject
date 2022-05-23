@@ -6,8 +6,13 @@
 
   This project uses a REST API via JPA and Spring, along with an Angular frontend, to perform CRUD and search procedures through a JSON-based API.  The database consists of one table - garmin_event - containing my personal activities imported through Garmin Connect.
 
+### Table of Contents
+[#routes](Routes)
+
 ### Technologies Used
 
+- Spring Tool Suite 4
+- Visual Studio Code
 - Java
 - MySql
 - MAMP
@@ -16,7 +21,6 @@
 - JPA
 - jparepository
 - Gradle
-- Spring Tool Suite 4
 - Angular
 - DataTables
 - Bootstrap
