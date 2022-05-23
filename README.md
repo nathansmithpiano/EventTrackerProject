@@ -40,15 +40,39 @@ Each of these routes speaks to a specific method and mapping in the controller c
     </tr>
     <tr>
         <td>:white_check_mark:</td>
-        <td>/api/index</td>
+        <td>GET /api/index</td>
         <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/index</td>
         <td>all</td>
     </tr>
     <tr>
         <td>:white_check_mark:</td>
-        <td>/api/events/{id}</td>
+        <td>GET /api/{id}</td>
         <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/1</td>
         <td>single</td>
+    </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td>POST /api/create</td>
+        <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/create</td>
+        <td>create</td>
+    </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td>PUT /api/update/{id}</td>
+        <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/update/1</td>
+        <td>update</td>
+    </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td>DELETE /api/update/{id}</td>
+        <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/delete/1</td>
+        <td>delete</td>
+    </tr>
+    <tr>
+        <td>:white_check_mark:</td>
+        <td>DELETE /api/search/distance/{low}/{high}</td>
+        <td>http://52.52.235.108:8080/GarminTrackerRestApplication/api/search/distance/1/10</td>
+        <td>search distance</td>
     </tr>
 </table>
 
