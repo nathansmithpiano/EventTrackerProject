@@ -24,14 +24,14 @@ import { EventsComponent } from './components/events/events.component';
     GarminEventComponent,
     NotFoundComponent,
     NavBarComponent,
-    EventsComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DataTablesModule,
+    DataTablesModule
   ],
   providers: [GarminService, DatePipe],
   bootstrap: [AppComponent],

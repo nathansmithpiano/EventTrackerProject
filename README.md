@@ -463,3 +463,144 @@ When using this form, at various points, may be necessary to reset the data back
 ```typescript
 this.event = JSON.parse(JSON.stringify(this.backup));
 ```
+
+## Integrating Datatables
+
+This was surprisingly difficult, perhaps because it was my first time trying to integrate an outside resource other than bootstrap, DatePipe, etc.  I attempted to use things like `PrimeNG` and `ngBootstrap` but this proved time consuming and for the purposes of this project unnecessary.
+
+I was able to use `DataTables` by first installing via the Angular CLI, then adding the following in `Angular.json`
+
+```JSON
+"styles": [
+  "node_modules/datatables.net-dt/css/jquery.dataTables.css"
+],
+"scripts": [
+  "node_modules/jquery/dist/jquery.js",
+  "node_modules/datatables.net/js/jquery.dataTables.js"
+]
+```
+
+Also, `in app.module.ts`:
+
+```typescript
+import { DataTablesModule } from 'angular-datatables';
+
+imports: [
+DataTablesModule
+],
+```
+
+After this, other areas of the project such as the `Events` component could use `DataTables`.
+
+```html
+<!-- Data Table -->
+<table id="events-table" datatable class="table row-border hover">
+<thead>
+  <tr>
+    <th>Type</th>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Distance</th>
+    <th>Calories</th>
+    <th>Time</th>
+    <th>Ascent</th>
+    <th>Descent</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let event of events" (click)="show(event.id)">
+    <td>{{event.type}}</td>
+    <td>{{event.date | date: 'short' }}</td>
+    <td>{{event.title}}</td>
+    <td>{{event.distance}}</td>
+    <td>{{event.calories}}</td>
+    <td>{{event.time}}</td>
+    <td>{{event.ascent}}</td>
+    <td>{{event.descent}}</td>
+  </tr>
+</tbody>
+</table>
+```
+
+## Aggregating Data in Home
+
+To produce a summary of data in the `Home` page, while I had several routes in my Rest controller already created to search via year range, distances, and so on, here I simply used `index()` in my Angular service to obtain all `GarminEvent` and then process through in typescript.
+
+```typescript
+setSummaries = (): void => {
+    let seconds = 0;
+    let maxD = 0;
+    let maxC = 0;
+    let maxT = 0;
+    for (let evt of this.events) {
+      if (evt) {
+        this.totalEvents += 1;
+        this.totalMiles += evt.distance ? evt.distance : 0;
+        this.totalCalories += evt.calories ? evt.calories : 0;
+        this.totalAscent += evt.ascent ? evt.ascent : 0;
+        if (evt.distance && evt.distance > maxD) {
+          maxD = evt.distance;
+        }
+        if (evt.calories && evt.calories > maxC) {
+          maxC = evt.calories;
+        }
+
+        // total time
+        if (evt.time) {
+          let arr = evt.time.split(':');
+          let s = 0;
+          if (arr[0]) {
+            s += parseInt(arr[0]) * 60 * 60;
+          }
+          if (arr[1]) {
+            s += parseInt(arr[1]) * 60;
+          }
+          if (arr[2]) {
+            s += parseInt(arr[2]);
+          }
+          seconds += s;
+          if (s > maxT) {
+            maxT = s;
+          }
+        }
+      }
+
+      let date: Date = new Date();
+      if (evt.date) {
+        date = new Date(Date.parse(evt.date));
+      }
+      let year = date.getFullYear();
+      if (this.yearCounts.has(year)) {
+        let count = this.yearCounts.get(year);
+        if (count) {
+          this.yearCounts.set(year, count + 1);
+        }
+      } else {
+        this.yearCounts.set(year, 1);
+      }
+    }
+    this.totalTime = this.secondsToHms(seconds);
+    this.totalMiles = Math.round(this.totalMiles);
+    this.maxTime = this.secondsToHms(maxT);
+    this.maxDistance = maxD;
+    this.maxCalories = maxC;
+    this.everestEquivalent = Math.round(this.totalAscent / 11433.7);
+    this.marathonEquivalent = Math.round(this.totalMiles / 26.2188);
+    this.oreoEquivalent = Math.round(this.totalCalories / 53);
+  };
+
+  secondsToHms(sec: number):string {
+    var d = Math.floor(sec / (3600*24));
+    var h = Math.floor(sec % (3600*24) / 3600);
+    var m = Math.floor(sec % 3600 / 60);
+    var s = Math.floor(sec % 60);
+    m += Math.round(s / 60);
+    if (d > 0) {
+      return d + ' days, ' + h + ' hrs, ' + m + ' min';
+    } else {
+      return h + ' hrs, ' + m + ' min';
+    }
+}
+```
+
+![summary on the Home page](Media/summary_page.png)
