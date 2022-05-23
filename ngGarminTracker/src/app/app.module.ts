@@ -16,6 +16,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { EventsComponent } from './components/events/events.component';
 import { DatePipePipe } from './date-pipe.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DatePipePipe } from './date-pipe.pipe';
     NotFoundComponent,
     NavBarComponent,
     EventsComponent,
-    DatePipePipe
+    DatePipePipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

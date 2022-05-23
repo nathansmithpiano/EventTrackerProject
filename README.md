@@ -2,6 +2,8 @@
 
   -- Developed for Skill Distillery Bootcamp Cohort 32 --
 
+  [See this project deployed on Amazon Web Services](http://52.52.235.108:8080/GarminTrackerREST)
+
 ### Description
 
   This project uses a REST API via JPA and Spring, along with an Angular frontend, to perform CRUD and search procedures through a JSON-based API.  The database consists of one table - `garmin_event` - containing my personal activities imported through [Garmin Connect](https://connect.garmin.com).

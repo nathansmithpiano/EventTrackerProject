@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div *ngIf="isLoading">
     <h1>LOADING</h1>
   </div>
@@ -90,7 +90,7 @@
               <div class="media d-flex">
                 <div class="media-body text-left">
                   <h3 class="danger">{{(totalCalories | number:'1.0':'en-US')}} cal</h3>
-                  <span>({{oreoEquivalent}} oreos)</span>
+                  <span>({{oreoEquivalent| number:'1.0':'en-US'}} oreos)</span>
                 </div>
                 <div class="align-self-center">
                   <i class="icon-fire danger font-large-2 float-right"></i>
