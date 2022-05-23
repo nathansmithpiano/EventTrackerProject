@@ -293,8 +293,6 @@ const routes: Routes = [
         component: EventsComponent },
   { path: 'events/:id', pathMatch: 'full',  
         component: GarminEventComponent },
-  { path: 'events/create', pathMatch: 'full',  
-        component: GarminEventComponent },
   { path: '**', pathMatch: 'full',  
         component: NotFoundComponent }
 ];
@@ -311,14 +309,12 @@ const routes: Routes = [
 <td>GarminEventComponent</td>
 </tr>
 <tr>
-<td>/events/create</td>
-<td>GarminEventComponent</td>
-</tr>
-<tr>
 <td>everything else</td>
 <td>NotFoundComponent</td>
 </tr>
 </table>
+
+Note: the route /events/create is not actually mapped, as the :id parameter "catches" this.  The GarminEvent component manages and redirects this when validating the parameter, as shown below.
 
 ## Single Event
 
